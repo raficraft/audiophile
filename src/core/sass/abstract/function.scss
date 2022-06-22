@@ -1,21 +1,4 @@
-@use "sass:math";
-
 $space: 8px;
-
-$base-font-size: 16px !default;
-
-//Supprime l'unité de mesure
-@function strip-unit($number) {
-  @if type-of($number) == "number" and not unitless($number) {
-    @return math.div($number, ($number * 0 + 1));
-  }
-  @return $number;
-}
-
-//Convertit le dimesionnement pixel -> rem
-@function rem($size, $base: $base-font-size) {
-  @return calc(1rem * $size / strip-unit($base));
-}
 
 @function centerAbsolute($size) {
   @return calc(50% - #{$size} / 2);
