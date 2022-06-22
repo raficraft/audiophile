@@ -1,0 +1,97 @@
+@import "./../../../../sass/abstract/function.scss";
+
+.caddy {
+  @include responsiveContainer(460px);
+  gap: 1rem;
+  @include flex(column);
+  background-color: rgb(233, 233, 233);
+  padding: 2rem;
+  border-radius: 5px;
+
+  h1 {
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .clear_caddy {
+    width: 100%;
+
+    button {
+      background-color: transparent;
+      color: red;
+      width: 100%;
+      border: none;
+      text-align: center;
+      transition: 0.5s;
+      &:hover {
+        transition: 0.5s;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .product_list {
+    @include flex(column);
+    width: 100%;
+
+    gap: 1rem;
+
+    .product_control {
+      @include flex(row, space-between, center);
+      width: 100%;
+      padding: 0.5rem 1rem;
+      background-color: rgb(204, 204, 204);
+    }
+    .product_details {
+      @include flex(column);
+      gap: 0.5rem;
+      p {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+
+    .bloc_input {
+      @include flex(row, flex-start, center);
+      button,
+      input {
+        border: none;
+        height: 2rem;
+        text-align: center;
+        background-color: #f1f1f1;
+        line-height: 2rem;
+      }
+
+      input {
+        font-size: 14px;
+        width: calc(100% - 4rem);
+        max-width: 2.5rem;
+      }
+
+      button {
+        @include size(2rem);
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.25);
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+
+        @include on-event {
+          transition: 0.5s;
+          background-color: orange;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .total {
+    width: 100%;
+    padding: 1rem 0;
+    border-top: 1px solid rgb(190, 190, 190);
+    @include flex(row, space-between, center);
+    p {
+      font-weight: bold;
+    }
+  }
+}

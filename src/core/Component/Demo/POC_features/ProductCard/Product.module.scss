@@ -1,0 +1,69 @@
+@import "./../../../../sass/abstract/function.scss";
+
+.productCard {
+  @include flex(column, flex-start, center);
+
+  label {
+    font-weight: bold;
+  }
+  .img_container {
+    @include size(200px);
+    margin: 1rem 0 0 0;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .bloc_input {
+    margin: 0 0 1rem 0;
+    border-top: 1px solid rgb(173, 173, 173);
+    @include flex(row, flex-start, center);
+    @include responsiveContainer(200px);
+    button,
+    input {
+      border: none;
+      height: 2rem;
+      text-align: center;
+      background-color: #f1f1f1;
+      line-height: 2rem;
+    }
+
+    input {
+      font-size: 18px;
+      width: calc(100% - 4rem);
+    }
+
+    button {
+      @include size(2rem);
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.25);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.5s;
+
+      @include on-event {
+        transition: 0.5s;
+        background-color: orange;
+        color: white;
+      }
+    }
+  }
+
+  .buy {
+    background-color: orange;
+    border: none;
+    color: white;
+    @include responsiveContainer(200px);
+    height: 2rem;
+    font-weight: bold;
+    transition: 0.5s;
+
+    @include on-event {
+      transition: 0.5s;
+      background-color: black;
+    }
+  }
+}
