@@ -32,7 +32,7 @@ export default function POC_features() {
         <ProductCard {...fakeProducts_1}></ProductCard>
         <ProductCard {...fakeProducts_2}></ProductCard>
       </section>
-      <section>
+      <section className={S.wrapper_caddy}>
         <Caddy></Caddy>
       </section>
     </div>

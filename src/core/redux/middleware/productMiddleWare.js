@@ -19,6 +19,7 @@ export const productMiddleWare = (store) => (next) => (action) => {
       } else {
         next(removeProduct(id));
       }
+
       break;
 
     default:

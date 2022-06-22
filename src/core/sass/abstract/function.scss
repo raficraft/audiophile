@@ -58,13 +58,9 @@ $space: 8px;
   border-radius: 50%;
 }
 
-@mixin responsiveContainer($width, $square: false) {
+@mixin responsiveContainer($width) {
   max-width: $width;
   width: 100%;
-  @if $square != false {
-    max-height: $width;
-    height: 100%;
-  }
 }
 
 @mixin flexCenter() {
