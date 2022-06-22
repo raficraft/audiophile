@@ -30,20 +30,29 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
   loadImage(img);
 
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
-    if (quantity >= 0 && inputRef && inputRef.current) {
-      inputRef.current.value = String(parseInt(inputRef.current.value) - 1);
+    if (inputRef && inputRef.current) {
+      if (Number(inputRef.current.value) >= 1) {
+        const newVal = String(parseInt(inputRef.current.value) - 1);
+        inputRef.current.value = newVal === "0" ? "1" : newVal;
+      }
     }
   }
 
   function increment(event: React.MouseEvent<HTMLButtonElement>) {
-    if (quantity >= 0 && inputRef && inputRef.current) {
-      inputRef.current.value = String(parseInt(inputRef.current.value) + 1);
+    if (inputRef && inputRef.current) {
+      if (Number(inputRef.current.value) >= 1) {
+        inputRef.current.value = String(parseInt(inputRef.current.value) + 1);
+      }
     }
   }
 
   function addToCart(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       qty = Number(inputRef.current.value);
+    }
+
+    if (inputRef && inputRef.current) {
+      inputRef.current.value = "1";
     }
 
     dispatch(
@@ -82,7 +91,7 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
         >
           -
         </button>
-        <input type="number" defaultValue={quantity} ref={inputRef} />
+        <input type="number" defaultValue={quantity} ref={inputRef} min="1" />
         <button
           type="button"
           onClick={(event) => {
