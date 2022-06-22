@@ -2,6 +2,8 @@
   @return calc(50% - #{$size} / 2);
 }
 
+$space: 8px;
+
 @function spacing($X) {
   @return calc(#{$X} * #{$space});
 }
