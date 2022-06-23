@@ -62,16 +62,9 @@ export default function Caddy() {
         .filter((el: { qty: number }) => el.qty > 0)
         .map((el, key: number) => {
           console.log(el);
+          console.log("debug");
           return (
             <div key={key} className={S.product_control}>
-              {/* <div
-                className={S.SVG_container}
-                onClick={(event) => {
-                  deleteProduct(event, el.id);
-                }}
-              >
-                <TrashIcon></TrashIcon>
-              </div> */}
               {el.img.scr && (
                 <div className={S.img_container}>
                   <img
