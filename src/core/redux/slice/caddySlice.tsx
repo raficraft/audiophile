@@ -14,13 +14,8 @@ function getLocalStorage() {
     : [];
 
   if (items.caddy) {
-    console.log(items.caddy);
-
     if (items.caddy.img) {
       return items.caddy;
-    }
-    if (!items.caddy.img) {
-      return [];
     }
   } else {
     return [];
