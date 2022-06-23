@@ -72,9 +72,15 @@ export default function Caddy() {
               >
                 <TrashIcon></TrashIcon>
               </div> */}
-              {/* <div className={S.img_container}>
-                <img src={el.img.src} width={el.img.x} height={el.img.y}></img>
-              </div> */}
+              {el.img.scr && (
+                <div className={S.img_container}>
+                  <img
+                    src={el.img.src}
+                    width={el.img.x}
+                    height={el.img.y}
+                  ></img>
+                </div>
+              )}
               <div className={S.product_details}>
                 <p>{`${el.name.toUpperCase()}`}</p>
                 <p>{`${el.price} €`}</p>
