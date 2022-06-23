@@ -16,7 +16,6 @@ function getLocalStorage() {
   if (items.caddy) {
     console.log(items.caddy);
     if (!items.caddy.img) {
-      localStorage.removeItem("caddy");
       return [];
     }
     return items.caddy;
