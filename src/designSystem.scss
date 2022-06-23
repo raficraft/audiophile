@@ -214,27 +214,53 @@ label {
 }
 
 .bloc_input__radio {
-  @include flex();
   position: relative;
-  height: 56px;
-  border: 1px solid var(--border-grey);
-  border-radius: 5px;
   @include flex(row, flex-start, center);
-  width: 300px;
-  text-indent: 52px;
+
+  .fakeContainer {
+    @include flex();
+    position: relative;
+    height: 56px;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    @include flex(row, flex-start, center);
+    min-width: 260px;
+    text-indent: 52px;
+  }
 
   input[type="radio"] {
     display: none;
   }
 
-  :before {
+  .fakeBox {
     position: absolute;
     @include size(1.25rem);
     content: " ";
-    top: 1rem;
     left: 1rem;
     @include circle();
     border: 1px solid var(--border-grey);
+
+    &:after {
+      position: absolute;
+      @include size(10px);
+      content: " ";
+      top: 4px;
+      left: 4px;
+      @include circle();
+      background-color: var(--background-orange);
+    }
+
+    &[data-ischecked="true"] ~ .fakeContainer {
+      border-color: var(--background-orange);
+    }
+
+    &[data-ischecked="true"]:after {
+      display: block;
+    }
+
+    &[data-ischecked="false"]:after {
+      display: none;
+    }
   }
 }
 

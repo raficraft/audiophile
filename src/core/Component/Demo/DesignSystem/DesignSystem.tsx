@@ -54,7 +54,18 @@ export default function DesignSystem() {
       </div>
 
       <div className="bloc_input__radio">
-        <label htmlFor="money">e-Money</label>
+        <label htmlFor="money" className="fakeContainer">
+          e-Money
+        </label>
+        <label className="fakeBox" data-ischecked="false"></label>
+        <input type="radio" id="money" name="radio" />
+      </div>
+
+      <div className="bloc_input__radio">
+        <label className="fakeBox" data-ischecked="true"></label>
+        <label htmlFor="money" className="fakeContainer">
+          e-Money
+        </label>
         <input type="radio" id="money" name="radio" />
       </div>
     </div>
