@@ -15,7 +15,7 @@ function getLocalStorage() {
 
   if (items.caddy) {
     console.log(items.caddy);
-    if (!items.caddy.img.src) {
+    if (!items.caddy.img) {
       return [];
     }
     return items.caddy;
