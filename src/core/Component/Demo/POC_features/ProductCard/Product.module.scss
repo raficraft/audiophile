@@ -61,7 +61,7 @@
     font-weight: bold;
     transition: 0.5s;
 
-    @include on-event {
+    &:hover {
       transition: 0.5s;
       background-color: black;
     }

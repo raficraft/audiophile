@@ -63,13 +63,16 @@ export default function Caddy() {
         .map((el, key: number) => {
           return (
             <div key={key} className={S.product_control}>
-              <div
+              {/* <div
                 className={S.SVG_container}
                 onClick={(event) => {
                   deleteProduct(event, el.id);
                 }}
               >
                 <TrashIcon></TrashIcon>
+              </div> */}
+              <div className={S.img_container}>
+                <img src={el.img.src} width={el.img.x} height={el.img.y}></img>
               </div>
               <div className={S.product_details}>
                 <p>{`${el.name.toUpperCase()}`}</p>

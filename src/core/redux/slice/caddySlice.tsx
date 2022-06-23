@@ -5,7 +5,7 @@ export interface MockProduct {
   name: string;
   price: number;
   qty: number;
-  img?: any;
+  img: any;
 }
 
 function getLocalStorage() {
@@ -35,6 +35,7 @@ export const caddySlice = createSlice({
         name: action.payload.name,
         price: action.payload.price,
         qty: action.payload.qty,
+        img: action.payload.img,
       };
 
       state.push(newProducts);

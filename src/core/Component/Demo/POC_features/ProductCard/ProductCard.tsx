@@ -21,7 +21,7 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
     };
     img.onload = function () {
       imgData.x = this.width;
-      imgData.y = this.heigth;
+      imgData.y = this.height;
     };
     img.onload();
     return imgData;
@@ -61,6 +61,7 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
         name,
         price,
         qty: qty,
+        img: imgInfo,
       })
     );
   }
