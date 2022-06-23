@@ -9,14 +9,25 @@ export interface MockProduct {
 }
 
 function getLocalStorage() {
-  const items = JSON.parse(localStorage.getItem("caddy") || "[]")
-    ? JSON.parse(localStorage.getItem("caddy") || "[]")
-    : [];
+  const ver = "0.0.1";
 
-  if (items.caddy) {
-    return items.caddy;
-  } else {
+  if (!localStorage.getItem("poc_ver")) {
+    localStorage.removeItem("caddy");
+    localStorage.setItem("poc_ver", ver);
     return [];
+  } else if (
+    localStorage.getItem("poc_ver") &&
+    localStorage.getItem("poc_ver") === "0.0.1"
+  ) {
+    const items = JSON.parse(localStorage.getItem("caddy") || "[]")
+      ? JSON.parse(localStorage.getItem("caddy") || "[]")
+      : [];
+
+    if (items.caddy) {
+      return items.caddy;
+    } else {
+      return [];
+    }
   }
 }
 

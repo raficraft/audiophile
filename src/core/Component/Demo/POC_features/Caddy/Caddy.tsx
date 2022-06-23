@@ -65,7 +65,7 @@ export default function Caddy() {
           console.log("debug");
           return (
             <div key={key} className={S.product_control}>
-              {/* {el.img.src && (
+              {el.img.src && (
                 <div className={S.img_container}>
                   <img
                     src={el.img.src}
@@ -73,7 +73,7 @@ export default function Caddy() {
                     height={el.img.y}
                   ></img>
                 </div>
-              )} */}
+              )}
               <div className={S.product_details}>
                 <p>{`${el.name.toUpperCase()}`}</p>
                 <p>{`${el.price} €`}</p>
