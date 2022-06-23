@@ -41,7 +41,7 @@ export default function DesignSystem() {
 
       <div className="bloc_input">
         <div className="bloc_input__head">
-          <label>Name</label>
+          <label htmlFor="user_name">Name</label>
           <p className="text_error">Wrong format</p>
         </div>
         <input
@@ -49,7 +49,13 @@ export default function DesignSystem() {
           id="user_name"
           name="user_name"
           placeholder="Insert your name"
+          className="input_text"
         />
+      </div>
+
+      <div className="bloc_input__radio">
+        <label htmlFor="money">e-Money</label>
+        <input type="radio" id="money" name="radio" />
       </div>
     </div>
   );
