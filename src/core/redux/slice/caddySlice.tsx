@@ -14,9 +14,7 @@ function getLocalStorage() {
     : [];
 
   if (items.caddy) {
-    if (items.caddy.img) {
-      return items.caddy;
-    }
+    return items.caddy;
   } else {
     return [];
   }
