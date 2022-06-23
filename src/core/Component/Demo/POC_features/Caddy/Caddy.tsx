@@ -61,6 +61,7 @@ export default function Caddy() {
       return products.caddy
         .filter((el: { qty: number }) => el.qty > 0)
         .map((el, key: number) => {
+          console.log(el);
           return (
             <div key={key} className={S.product_control}>
               {/* <div
