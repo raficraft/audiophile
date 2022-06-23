@@ -65,7 +65,7 @@ export default function Caddy() {
           console.log("debug");
           return (
             <div key={key} className={S.product_control}>
-              {el.img.scr && (
+              {el.img.src && (
                 <div className={S.img_container}>
                   <img
                     src={el.img.src}
