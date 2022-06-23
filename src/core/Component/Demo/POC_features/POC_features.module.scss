@@ -1,5 +1,7 @@
 @import "./../../../sass/abstract/function.scss";
 
+/**/
+
 .wrapper {
   @include flex(column, center, center);
   max-width: 1440px;
