@@ -7,6 +7,7 @@ $width_img: 130px;
   @include flexCenter(column);
   width: 100%;
   position: relative;
+
   header {
     position: absolute;
     top: -50px;

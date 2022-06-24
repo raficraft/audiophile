@@ -11,17 +11,21 @@
     display: none;
   }
 
-  @include on-event() {
-    transition: 0.5s;
-    transform: scale(1.2);
+  span {
+    @include size(100%, 3px);
+    content: " ";
+    background-color: var(--background-light);
+  }
+
+  &[data-isopen="true"] {
     span {
       background-color: var(--background-orange);
     }
   }
 
-  span {
-    @include size(100%, 3px);
-    content: " ";
-    background-color: var(--background-light);
+  &[data-isopen="false"] {
+    span {
+      background-color: var(--background-light);
+    }
   }
 }

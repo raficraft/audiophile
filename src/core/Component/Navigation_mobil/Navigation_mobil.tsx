@@ -9,7 +9,12 @@ import img_speakers from "../../../assets/nav_mobil/image-category-thumbnail-spe
 
 console.log(img_earphones);
 
-export default function Navigation_mobil() {
+interface img_items {
+  isOpen: boolean;
+  setter: Function;
+}
+
+export default function Navigation_mobil({ isOpen, setter }: img_items) {
   const [topPosition, setTopPosition] = useState("0px");
 
   useLayoutEffect(() => {
@@ -21,8 +26,20 @@ export default function Navigation_mobil() {
   }, []);
 
   return createPortal(
-    <div className={S.navigation_mobil} style={{ top: topPosition }}>
-      <nav className={S.navigation_content}>
+    <div
+      className={S.navigation_mobil}
+      style={{ top: topPosition }}
+      data-isopen={isOpen}
+      onClick={() => {
+        setter(!isOpen);
+      }}
+    >
+      <nav
+        className={S.navigation_content}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Navigation_mobil_item
           src={img_headphones}
           title={"headphones"}

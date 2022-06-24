@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import useLoadImage from "../../../hooks/useLoadImage";
 import S from "./Navigation_mobil_item.module.scss";
 
-interface toto {
+interface img_items {
   src: string;
   title: string;
 }
 
-export default function Navigation_mobil_item({ src, title }: toto) {
+export default function Navigation_mobil_item({ src, title }: img_items) {
   const [imgInfo] = useLoadImage(src);
 
   console.log("in ITem", imgInfo);
