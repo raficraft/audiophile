@@ -1,0 +1,23 @@
+@import "../../sass/abstract/function.scss";
+
+.header {
+  background-color: var(--background-dark);
+  @include flex(row, space-between, center);
+  position: relative;
+
+  .logo {
+    @include flexCenter();
+    @media screen and (max-width: 768px) {
+      position: absolute;
+      left: 60px;
+    }
+
+    @media screen and (max-width: 600px) {
+      position: static;
+      left: 0;
+    }
+  }
+  .SVG_container {
+    @include flexCenter();
+  }
+}

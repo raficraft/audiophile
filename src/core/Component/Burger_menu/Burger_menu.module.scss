@@ -1,0 +1,27 @@
+@import "../../sass/abstract/function.scss";
+
+.burger_menu {
+  @include size(16px, 15px);
+  content: " ";
+  position: relative;
+  @include flex(column, space-between, center);
+  transition: 0.5s;
+  cursor: pointer;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+
+  @include on-event() {
+    transition: 0.5s;
+    transform: scale(1.2);
+    span {
+      background-color: var(--background-orange);
+    }
+  }
+
+  span {
+    @include size(100%, 3px);
+    content: " ";
+    background-color: var(--background-light);
+  }
+}

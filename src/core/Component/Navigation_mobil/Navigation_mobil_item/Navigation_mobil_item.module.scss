@@ -1,0 +1,39 @@
+@import "../../../sass/abstract/function.scss";
+
+$width_img: 130px;
+
+.nav_item {
+  text-decoration: none;
+  @include flexCenter(column);
+  width: 100%;
+  position: relative;
+  header {
+    position: absolute;
+    top: -50px;
+    .img_container {
+      @include size($width_img);
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .item_content {
+    background-color: var(--background-grey);
+    @include flexCenter(column);
+    padding: 88px 0 22px 0;
+    border-radius: 8px;
+    width: 100%;
+    .title {
+      font-size: 15px;
+      letter-spacing: 1.07px;
+      margin: 0 0 17px 0;
+      font-weight: bold;
+      color: var(--text-dark);
+      text-transform: uppercase;
+    }
+  }
+}
