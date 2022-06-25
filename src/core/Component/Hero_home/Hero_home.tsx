@@ -43,8 +43,8 @@ export default function Hero_home() {
           <div className={S.overprint}>
             <div className={S.overprint_content}>
               <p className="text_overline__grey">new product</p>
-              <h1 className="text_withe">XX99 Mark II Headphones</h1>
-              <p className="text_withe__smooth">
+              <h1 className="text_white ">XX99 Mark II Headphones</h1>
+              <p className="text_white__smooth">
                 Experience natural, lifelike audio and exceptional build quality
                 made for the passionate music enthusiast.
               </p>

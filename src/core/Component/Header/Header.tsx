@@ -18,7 +18,7 @@ export default function Header() {
           </NavLink>
 
           <div className={S.nav_container}>
-            <Navigation></Navigation>
+            <Navigation cssName="nav_header"></Navigation>
           </div>
           <div className={S.SVG_container}>
             <CaddyIcons></CaddyIcons>

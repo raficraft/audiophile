@@ -1,0 +1,41 @@
+@import "../../sass/abstract/function.scss";
+
+.footer_content {
+  header {
+    @include responsiveContainer(100%);
+    @include flex(row, space-between, center);
+    margin: 0 0 36px 0;
+  }
+
+  .center_el {
+    @include flex(row, space-between, center);
+    margin: 0 0 56px 0;
+    p {
+      width: 540px;
+    }
+
+    a {
+      svg {
+        cursor: pointer;
+        color: white;
+        transition: 0.5s;
+
+        &:hover {
+          transition: 0.5s;
+          color: var(--background-orange);
+        }
+      }
+    }
+  }
+
+  footer {
+    .social_icon {
+      display: none;
+    }
+  }
+
+  .social_icon {
+    @include flexCenter();
+    gap: 1rem;
+  }
+}

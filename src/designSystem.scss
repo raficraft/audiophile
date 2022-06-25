@@ -122,17 +122,17 @@ a {
   font-weight: bold;
 }
 
-.text_withe {
+.text_white {
   color: var(--text-light);
 }
-.text_withe__smooth {
+.text_white__smooth {
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
   color: var(--text-light);
   mix-blend-mode: normal;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 
 .text_error {
@@ -350,10 +350,14 @@ label {
   }
 }
 
-.header_layout {
-  z-index: 100;
+.header_layout,
+.footer_layout {
   @include flexCenter(column);
   background-color: var(--background-dark);
+}
+
+.footer_layout {
+  padding: 75px 0 2rem 0;
 }
 
 .hero_separator {
