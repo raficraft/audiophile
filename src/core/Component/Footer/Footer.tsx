@@ -9,6 +9,7 @@ export default function Footer() {
   return (
     <section id="header_layout" className="wrapper_layout footer_layout">
       <div className="wrapper_inside">
+        <div className="footer_emphasis__color"></div>
         <div className={S.footer_content}>
           <header>
             <NavLink to="/" className={S.logo}>

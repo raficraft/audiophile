@@ -358,6 +358,17 @@ label {
 
 .footer_layout {
   padding: 75px 0 2rem 0;
+
+  .footer_emphasis__color {
+    content: " ";
+    @include size(101px, 5px);
+    background-color: var(--background-orange);
+    position: absolute;
+    top: 0;
+    @media screen and (max-width: 600px) {
+      left: centerAbsolute(101px);
+    }
+  }
   @media screen and (max-width: 600px) {
     padding: 52px 1.5rem 38px 1.5rem;
   }
