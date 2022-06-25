@@ -14,36 +14,31 @@ export default function Hero_home() {
   const [imgTablet] = useLoadImage(image_hero_tablet);
   const [imgMobile] = useLoadImage(image_hero_mobile);
 
-  const isMobil = useMediaQuery("(max-width : 600px)");
-  const isTablet = useMediaQuery("(min-width : 601px) and (max-width : 960px)");
-  const isDesktop = useMediaQuery("(min-width : 961px)");
-
   return (
     <section className={`wrapper_layout hero_layout`}>
       <div className="wrapper_inside">
         <div className={S.hero_content}>
           <div className={S.img_container}>
-            {isMobil && (
-              <img
-                src={imgMobile.src}
-                width={imgMobile.x}
-                height={imgMobile.y}
-              />
-            )}
-            {isTablet && (
-              <img
-                src={imgTablet.src}
-                width={imgTablet.x}
-                height={imgTablet.y}
-              />
-            )}
-            {isDesktop && (
-              <img
-                src={imgDesktop.src}
-                width={imgDesktop.x}
-                height={imgDesktop.y}
-              />
-            )}
+            <img
+              src={imgMobile.src}
+              width={imgMobile.x}
+              height={imgMobile.y}
+              className={`${S.responsive_img} ${S.size_375}`}
+            />
+
+            <img
+              src={imgTablet.src}
+              width={imgTablet.x}
+              height={imgTablet.y}
+              className={`${S.responsive_img} ${S.size_768}`}
+            />
+
+            <img
+              src={imgDesktop.src}
+              width={imgDesktop.x}
+              height={imgDesktop.y}
+              className={`${S.responsive_img} ${S.size_1440}`}
+            />
           </div>
 
           <div className={S.overprint}>
