@@ -6,7 +6,6 @@ import image_hero_tablet from "../../../assets/home/tablet/image-hero.jpg";
 import useLoadImage from "../../hooks/useLoadImage";
 
 import S from "./Hero_home.module.scss";
-import useMediaQuery from "../hooks/useMediaQueries";
 import { NavLink } from "react-router-dom";
 
 export default function Hero_home() {
