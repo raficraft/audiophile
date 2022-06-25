@@ -3,6 +3,7 @@
 .hero_content {
   @include flexCenter();
   @include responsiveContainer(1440px);
+  position: relative;
 
   @media screen and (max-width: 768px) {
     @include responsiveContainer(100%);
@@ -17,6 +18,31 @@
 
       height: 100%;
       width: 100%;
+    }
+  }
+
+  .overprint {
+    @include responsiveContainer(398px);
+
+    @include fullAbsolute(
+      128px,
+      var(--layout-padding-X),
+      0,
+      var(--layout-padding-X),
+      200
+    );
+
+    &_content {
+      @include flex(column);
+      gap: 24px;
+
+      & p:nth-last-child(2) {
+        @include responsiveContainer(349px);
+      }
+
+      a {
+        margin: 1rem 0 0 0;
+      }
     }
   }
 }

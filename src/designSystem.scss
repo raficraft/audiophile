@@ -69,6 +69,10 @@ h6 {
   letter-spacing: 1.3px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .text {
   font-size: 15px;
   font-weight: 500;
@@ -84,6 +88,17 @@ h6 {
   font-weight: bold;
   text-transform: uppercase;
 }
+.text_overline__grey {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
 
 .text_subtitle {
   font-size: 13px;
@@ -91,6 +106,19 @@ h6 {
   letter-spacing: 1px;
   color: var(--text-orange);
   font-weight: bold;
+}
+
+.text_withe {
+  color: var(--text-light);
+}
+.text_withe__smooth {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--text-light);
+  mix-blend-mode: normal;
+  opacity: 0.75;
 }
 
 .text_error {
@@ -306,7 +334,6 @@ label {
   position: relative;
   z-index: 100;
   @include flexCenter(column);
-  background-color: var(--background-dark);
 }
 
 .hero_separator {

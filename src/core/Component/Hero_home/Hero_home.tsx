@@ -7,6 +7,7 @@ import useLoadImage from "../../hooks/useLoadImage";
 
 import S from "./Hero_home.module.scss";
 import useMediaQuery from "../hooks/useMediaQueries";
+import { NavLink } from "react-router-dom";
 
 export default function Hero_home() {
   const [imgDesktop] = useLoadImage(image_hero_desktop);
@@ -47,6 +48,26 @@ export default function Hero_home() {
               height={imgDesktop.y}
             />
           )}
+        </div>
+
+        <div
+          className={S.overprint}
+          style={{
+            transform: `translateY(${topPosition})`,
+            maxHeight: `calc(100% - ${topPosition})`,
+          }}
+        >
+          <div className={S.overprint_content}>
+            <p className="text_overline__grey">new product</p>
+            <h1 className="text_withe">XX99 Mark II Headphones</h1>
+            <p className="text_withe__smooth">
+              Experience natural, lifelike audio and exceptional build quality
+              made for the passionate music enthusiast.
+            </p>
+            <NavLink to="/" className="btn btn_primary">
+              see product
+            </NavLink>
+          </div>
         </div>
       </div>
     </section>
