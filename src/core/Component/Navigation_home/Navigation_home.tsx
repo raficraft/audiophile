@@ -11,12 +11,6 @@ export default function Navigation_home() {
     <div className={S.navigation_home}>
       <div className={S.item_container}>
         <Navigation_mobil_item
-          src={img_earphones}
-          title="earphones"
-        ></Navigation_mobil_item>
-      </div>
-      <div className={S.item_container}>
-        <Navigation_mobil_item
           src={img_headphones}
           title="headphones"
         ></Navigation_mobil_item>
@@ -25,6 +19,12 @@ export default function Navigation_home() {
         <Navigation_mobil_item
           src={img_speakers}
           title="speakers"
+        ></Navigation_mobil_item>
+      </div>
+      <div className={S.item_container}>
+        <Navigation_mobil_item
+          src={img_earphones}
+          title="earphones"
         ></Navigation_mobil_item>
       </div>
     </div>

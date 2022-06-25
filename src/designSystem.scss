@@ -358,6 +358,12 @@ label {
 
 .home_content {
   padding: 200px 0;
+  @media screen and (max-width: 1280px) {
+    padding: 148px 0 96px 0;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 92px 24px 120px 24px;
+  }
 }
 
 .footer_layout {

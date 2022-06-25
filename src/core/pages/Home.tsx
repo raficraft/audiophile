@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Hero_home></Hero_home>
-      <section id="header_layout" className="wrapper_layout">
+      <section className="wrapper_layout">
         <div className="wrapper_inside">
           <div className="home_content">
             <Navigation_home></Navigation_home>
