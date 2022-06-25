@@ -358,6 +358,9 @@ label {
 
 .footer_layout {
   padding: 75px 0 2rem 0;
+  @media screen and (max-width: 600px) {
+    padding: 52px 1.5rem 38px 1.5rem;
+  }
 }
 
 .hero_separator {
