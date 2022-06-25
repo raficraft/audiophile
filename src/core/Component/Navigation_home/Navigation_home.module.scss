@@ -1,0 +1,9 @@
+@import "../../sass/abstract/function.scss";
+
+.navigation_home {
+  @include flex(row, space-between);
+
+  .item_container {
+    @include responsiveContainer(350px);
+  }
+}

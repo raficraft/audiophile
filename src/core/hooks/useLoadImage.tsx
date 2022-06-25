@@ -7,8 +7,6 @@ export default function useLoadImage(src: string) {
     src: src,
   });
 
-  console.log("in hooks", src);
-
   function loadImage(src: string) {
     let img = new Image();
     img.src = src;

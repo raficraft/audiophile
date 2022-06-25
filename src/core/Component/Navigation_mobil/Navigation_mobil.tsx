@@ -7,8 +7,6 @@ import img_earphones from "../../../assets/nav_mobil/image-category-thumbnail-ea
 import img_headphones from "../../../assets/nav_mobil/image-category-thumbnail-headphones.png";
 import img_speakers from "../../../assets/nav_mobil/image-category-thumbnail-speakers.png";
 
-console.log(img_earphones);
-
 interface img_items {
   isOpen: boolean;
   setter: Function;
@@ -40,18 +38,24 @@ export default function Navigation_mobil({ isOpen, setter }: img_items) {
           e.stopPropagation();
         }}
       >
-        <Navigation_mobil_item
-          src={img_headphones}
-          title={"headphones"}
-        ></Navigation_mobil_item>
-        <Navigation_mobil_item
-          src={img_speakers}
-          title={"speakers"}
-        ></Navigation_mobil_item>
-        <Navigation_mobil_item
-          src={img_earphones}
-          title={"earphones"}
-        ></Navigation_mobil_item>
+        <div className="full_width">
+          <Navigation_mobil_item
+            src={img_headphones}
+            title={"headphones"}
+          ></Navigation_mobil_item>
+        </div>
+        <div className="full_width">
+          <Navigation_mobil_item
+            src={img_speakers}
+            title={"speakers"}
+          ></Navigation_mobil_item>
+        </div>
+        <div className="full_width">
+          <Navigation_mobil_item
+            src={img_earphones}
+            title={"earphones"}
+          ></Navigation_mobil_item>
+        </div>
       </nav>
     </div>,
     document.body

@@ -356,6 +356,10 @@ label {
   background-color: var(--background-dark);
 }
 
+.home_content {
+  padding: 200px 0;
+}
+
 .footer_layout {
   padding: 75px 0 2rem 0;
 
@@ -378,14 +382,6 @@ label {
   height: 10px;
   background-color: red;
   z-index: 2000;
-}
-
-.fuck {
-  @include flex();
-  height: 1px;
-  width: 100%;
-  background-color: red;
-  content: " ";
 }
 
 .hero_layout {
