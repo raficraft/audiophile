@@ -18,58 +18,56 @@ export default function Hero_home() {
   const isTablet = useMediaQuery("(min-width : 601px) and (max-width : 960px)");
   const isDesktop = useMediaQuery("(min-width : 961px)");
 
-  const [topPosition, setTopPosition] = useState("0px");
-
-  useLayoutEffect(() => {
-    const header: HTMLElement | null = document.getElementById("header_layout");
-    if (header) {
-      const styles_header = window.getComputedStyle(header);
-      setTopPosition(styles_header.height);
-    }
-  }, []);
-
   return (
-    <section
-      className={`wrapper_layout hero_layout`}
-      style={{ transform: `translateY(-${topPosition})` }}
-    >
-      <div className={S.hero_content}>
-        <div className={S.img_container}>
-          {isMobil && (
-            <img src={imgMobile.src} width={imgMobile.x} height={imgMobile.y} />
-          )}
-          {isTablet && (
-            <img src={imgTablet.src} width={imgTablet.x} height={imgTablet.y} />
-          )}
-          {isDesktop && (
-            <img
-              src={imgDesktop.src}
-              width={imgDesktop.x}
-              height={imgDesktop.y}
-            />
-          )}
-        </div>
+    <section className={`wrapper_layout hero_layout`}>
+      <div className="wrapper_inside">
+        <div className={S.hero_content}>
+          <div className={S.img_container}>
+            {isMobil && (
+              <img
+                src={imgMobile.src}
+                width={imgMobile.x}
+                height={imgMobile.y}
+              />
+            )}
+            {isTablet && (
+              <img
+                src={imgTablet.src}
+                width={imgTablet.x}
+                height={imgTablet.y}
+              />
+            )}
+            {isDesktop && (
+              <img
+                src={imgDesktop.src}
+                width={imgDesktop.x}
+                height={imgDesktop.y}
+              />
+            )}
+          </div>
 
-        <div
-          className={S.overprint}
-          style={{
-            transform: `translateY(${topPosition})`,
-            maxHeight: `calc(100% - ${topPosition})`,
-          }}
-        >
-          <div className={S.overprint_content}>
-            <p className="text_overline__grey">new product</p>
-            <h1 className="text_withe">XX99 Mark II Headphones</h1>
-            <p className="text_withe__smooth">
-              Experience natural, lifelike audio and exceptional build quality
-              made for the passionate music enthusiast.
-            </p>
-            <NavLink to="/" className="btn btn_primary">
-              see product
-            </NavLink>
+          <div className={S.overprint}>
+            <div className={S.overprint_content}>
+              <p className="text_overline__grey">new product</p>
+              <h1 className="text_withe">XX99 Mark II Headphones</h1>
+              <p className="text_withe__smooth">
+                Experience natural, lifelike audio and exceptional build quality
+                made for the passionate music enthusiast.
+              </p>
+              <NavLink to="/" className="btn btn_primary">
+                see product
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+// style={{ transform: `translateY(-${topPosition})` }}
+
+// style={{
+//     transform: `translateY(${topPosition})`,
+//     maxHeight: `calc(100% - ${topPosition})`,
+//   }}

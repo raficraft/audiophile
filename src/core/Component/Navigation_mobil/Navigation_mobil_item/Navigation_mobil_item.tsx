@@ -11,7 +11,6 @@ interface img_items {
 export default function Navigation_mobil_item({ src, title }: img_items) {
   const [imgInfo] = useLoadImage(src);
 
-  console.log("in ITem", imgInfo);
   return (
     <NavLink to="/" className={S.nav_item}>
       <header>

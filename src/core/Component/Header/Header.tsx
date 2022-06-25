@@ -9,7 +9,7 @@ import S from "./Header.module.scss";
 export default function Header() {
   return (
     <section id="header_layout" className="wrapper_layout header_layout">
-      <div className="wrapper_header">
+      <div className="wrapper_inside wrapper_header">
         <header className={S.header}>
           <Burger_Menu></Burger_Menu>
 

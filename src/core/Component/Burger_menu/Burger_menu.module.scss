@@ -2,7 +2,6 @@
 
 .burger_menu {
   @include size(16px, 15px);
-  top: 5px;
   content: " ";
   @include flex(column, space-between, center);
   transition: 0.5s;
@@ -14,7 +13,6 @@
 
   @media screen and (max-width: 600px) {
     position: static;
-    margin-top: 5px;
   }
 
   span {
