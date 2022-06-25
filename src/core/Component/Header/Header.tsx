@@ -9,15 +9,17 @@ import S from "./Header.module.scss";
 export default function Header() {
   return (
     <section id="header_layout" className="wrapper_layout header_layout">
-      <div className="wrapper_inside wrapp">
+      <div className="wrapper_header">
         <header className={S.header}>
           <Burger_Menu></Burger_Menu>
-          <div className={S.logo}>
-            <NavLink to="/">
-              <Logo></Logo>
-            </NavLink>
+
+          <NavLink to="/" title="home page" className={S.logo}>
+            <Logo></Logo>
+          </NavLink>
+
+          <div className={S.nav_container}>
+            <Navigation></Navigation>
           </div>
-          <Navigation></Navigation>
           <div className={S.SVG_container}>
             <CaddyIcons></CaddyIcons>
           </div>

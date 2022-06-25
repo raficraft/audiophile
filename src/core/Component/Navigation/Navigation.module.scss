@@ -2,17 +2,17 @@
 
 .nav_header {
   flex: 1;
-  padding: 0 0 0 197px;
+
   @include flex(row, flex-start, center, nowrap);
   gap: 34px;
   align-self: flex-start;
 
-  @media screen and (max-width: 1080px) {
-    padding: 0 0 0 18.2vmax;
-  }
-  @media screen and (max-width: 960px) {
-    padding: 0 0 0 15.2vmin;
-  }
+  // @media screen and (max-width: 1080px) {
+  //   padding: 0 0 0 18.2vmax;
+  // }
+  // @media screen and (max-width: 960px) {
+  //   padding: 0 0 0 15.2vmin;
+  // }
 
   @media screen and (max-width: 768px) {
     display: none;

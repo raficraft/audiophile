@@ -1,5 +1,10 @@
 import React from "react";
+import Hero_home from "../Component/Hero_home/Hero_home";
 
 export default function Home() {
-  return <div>Homes Pages</div>;
+  return (
+    <>
+      <Hero_home></Hero_home>
+    </>
+  );
 }

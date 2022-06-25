@@ -9,7 +9,7 @@
 
   --background-orange: #d87d4a;
   --background-orange-light: #fbaf85;
-  --background-dark: #141414;
+  --background-dark: #191919;
   --background-light: white;
   --background-grey: #f1f1f1;
   --background-grey-light: #fafafa;
@@ -274,6 +274,7 @@ label {
   min-height: 100%;
   height: 100%;
   background-color: var(--background-grey-light);
+  @include flex(column, flex-start, flex-start, nowrap);
 }
 
 #demo {
@@ -286,19 +287,58 @@ label {
   @include flexCenter();
 }
 
-.wrapper_inside {
-  @include responsiveContainer(var(--layout_width));
-  padding-left: var(--layout-padding-X);
-  padding-right: var(--layout-padding-X);
-  @media screen and (max-width: 1439px) {
-    padding-left: 40px;
-    padding-right: 40px;
+.wrapper_header {
+  padding: 2rem 0;
+  @include responsiveContainer(calc(var(--layout_width) - 2 * 165px));
+  border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+  //1440 - 2 padding of 165px + 2 * 40px
+  @media screen and (max-width: 1190px) {
+    @include responsiveContainer(calc(100% - 2 * 40px));
+    padding: 2rem 0;
+  }
+  @media screen and (max-width: 600px) {
+    @include responsiveContainer(calc(100%));
+    padding: 2rem 1.5rem;
   }
 }
 
 .header_layout {
-  background-color: var(--background-dark);
-  padding: 2rem 0;
   position: relative;
   z-index: 100;
+  @include flexCenter(column);
+  background-color: var(--background-dark);
+}
+
+.hero_separator {
+  height: 10px;
+  background-color: red;
+  z-index: 2000;
+}
+
+.fuck {
+  @include flex();
+  height: 1px;
+  width: 100%;
+  background-color: red;
+  content: " ";
+}
+
+.hero_layout {
+  background-color: #191919;
+  display: flex;
+}
+
+.hero_wrap {
+  padding: 0;
+  @include flexCenter();
+}
+
+@media screen and (max-width: 375px) {
+  .size_375 {
+    display: block;
+
+    & > img ~ img {
+      display: none;
+    }
+  }
 }
