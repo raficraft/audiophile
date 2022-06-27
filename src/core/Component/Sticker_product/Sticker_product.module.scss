@@ -1,0 +1,44 @@
+@import "../../sass/abstract/function.scss";
+
+.fullSize_imageAbsolute {
+  position: relative;
+  border-radius: 5px;
+  @include responsiveContainer(100%);
+  img {
+    border-radius: 8px;
+  }
+
+  .sticker_content {
+    @include fullAbsolute();
+    @include flex(column, center, flex-start);
+
+    .sticker_item {
+      @include flex(column);
+      gap: 2rem;
+      margin: 0 0 0 95px;
+    }
+  }
+}
+
+.separate_roundend {
+  @include flex(row, space-between, center);
+  @include responsiveContainer(100%);
+  img {
+    border-radius: 8px;
+  }
+
+  .sticker_content {
+    @include flex(column, center, flex-start);
+    background-color: var(--background-grey);
+    flex: 1;
+    align-self: stretch;
+    margin-left: 30px;
+    border-radius: 8px;
+  }
+
+  .sticker_item {
+    @include flex(column);
+    gap: 2rem;
+    margin: 0 0 0 95px;
+  }
+}

@@ -171,7 +171,6 @@ label {
 .btn_secondary {
   padding: 14px 30px;
   color: var(--text-dark);
-  background-color: var(--background-light);
   transition: 0.5s;
   border: 1px solid black;
 
@@ -357,7 +356,9 @@ label {
 }
 
 .home_content {
+  @include flex("column");
   padding: 200px 0;
+  gap: 4rem;
   @media screen and (max-width: 1280px) {
     padding: 148px 0 96px 0;
   }
@@ -407,5 +408,27 @@ label {
     & > img ~ img {
       display: none;
     }
+  }
+}
+
+.responsive_img {
+  object-fit: cover;
+  width: 100%;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .size_375 {
+    display: block;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 960px) {
+  .size_768 {
+    display: block;
+  }
+}
+@media screen and (min-width: 961px) {
+  .size_1440 {
+    display: block;
   }
 }

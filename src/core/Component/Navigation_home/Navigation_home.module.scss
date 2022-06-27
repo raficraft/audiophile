@@ -1,6 +1,7 @@
 @import "../../sass/abstract/function.scss";
 
 .navigation_home {
+  @include responsiveContainer(100%);
   @include flex(row, space-between);
   @media screen and(max-width: 767px) {
     @include flexCenter(column);
