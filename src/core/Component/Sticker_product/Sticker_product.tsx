@@ -6,10 +6,9 @@ interface propsTypes {
   title: JSX.Element;
   button?: JSX.Element;
   text?: string;
-
   multiSrc: {
     src: { x: number; y: number; src: string }[];
-    media: number;
+    media: string;
     nameStyle: string;
   }[];
 }
@@ -21,27 +20,25 @@ export default function Sticker_product({
   button,
   multiSrc,
 }: propsTypes) {
-  console.log(cssName);
-  console.log(S);
-
   function makeImg() {
+    console.log(multiSrc);
     return multiSrc.map((image, key) => {
-      console.log(image);
-
       return image.src.map((el, key) => {
+        console.log(image);
         return (
           <div
             className={`container_responsive_img 
             container_responsive_img--${image.media} ${
               S[`container_${image.media}`]
             } `}
+            key={key}
           >
             <img
-              key={key}
               src={el.src}
               width={el.x}
               height={el.y}
               className={image.nameStyle}
+              loading="lazy"
             />
           </div>
         );

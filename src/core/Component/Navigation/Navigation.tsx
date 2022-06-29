@@ -10,9 +10,9 @@ export default function Navigation({ cssName }: propsType) {
   return (
     <nav className={`${S[cssName]}`}>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/">headphones</NavLink>
-      <NavLink to="/">speakers</NavLink>
-      <NavLink to="/">earphones</NavLink>
+      <NavLink to="/categories/headphones">headphones</NavLink>
+      <NavLink to="/categories/speakers">speakers</NavLink>
+      <NavLink to="/categories/earphones">earphones</NavLink>
     </nav>
   );
 }

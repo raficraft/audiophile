@@ -29,72 +29,72 @@ export default function Sticker_home() {
   const best_gear_images_array = [
     {
       src: useLoadImage(image_best_gear_desktop),
-      media: 1440,
-      nameStyle: "size_1440 responsive_img",
+      media: "desktop",
+      nameStyle: "size_desktop responsive_img",
     },
     {
       src: useLoadImage(image_best_gear_mobil),
-      media: 768,
-      nameStyle: "size_768 responsive_img",
+      media: "tablet",
+      nameStyle: "size_tablet responsive_img",
     },
     {
       src: useLoadImage(image_best_gear_tablet),
-      media: 375,
-      nameStyle: "size_375 responsive_img",
+      media: "mobile",
+      nameStyle: "size_mobile responsive_img",
     },
   ];
 
   const speakers_zx9_images_array = [
     {
       src: useLoadImage(image_speakers_zx9_desktop),
-      media: 1440,
-      nameStyle: "size_1440 responsive_img",
+      media: "desktop",
+      nameStyle: "size_desktop responsive_img",
     },
     {
       src: useLoadImage(image_speakers_zx9_tablet),
-      media: 768,
-      nameStyle: "size_768 responsive_img",
+      media: "tablet",
+      nameStyle: "size_tablet responsive_img",
     },
     {
       src: useLoadImage(image_speakers_zx9_mobile),
-      media: 375,
-      nameStyle: "size_375 responsive_img",
+      media: "mobile",
+      nameStyle: "size_mobile responsive_img",
     },
   ];
 
   const earphones_images_array = [
     {
       src: useLoadImage(image_earphones_desktop),
-      media: 1440,
-      nameStyle: "size_1440 responsive_img",
+      media: "desktop",
+      nameStyle: "size_desktop responsive_img",
     },
     {
       src: useLoadImage(image_earphones_tablet),
-      media: 768,
-      nameStyle: "size_768 responsive_img",
+      media: "tablet",
+      nameStyle: "size_tablet responsive_img",
     },
     {
       src: useLoadImage(image_earphones_mobile),
-      media: 375,
-      nameStyle: "size_375 responsive_img",
+      media: "mobile",
+      nameStyle: "size_mobile responsive_img",
     },
   ];
 
   const speakers_images_array = [
     {
       src: useLoadImage(image_speakers_desktop),
-      media: 1440,
-      nameStyle: "size_1440 responsive_img",
+      media: "desktop",
+      nameStyle: "size_desktop responsive_img",
     },
     {
       src: useLoadImage(image_speakers_tablet),
-      media: 768,
-      nameStyle: "size_768 responsive_img",
+      media: "tablet",
+      nameStyle: "size_tablet responsive_img",
     },
     {
       src: useLoadImage(image_speakers_mobile),
-      media: 375,
-      nameStyle: "size_375 responsive_img",
+      media: "mobile",
+      nameStyle: "size_mobile responsive_img",
     },
   ];
 

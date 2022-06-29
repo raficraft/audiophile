@@ -25,7 +25,7 @@
 
   @media screen and (max-width: 600px) {
     height: 320px;
-    .container_375 {
+    .container_mobile {
       height: 100%;
     }
     .sticker_content {
@@ -40,13 +40,13 @@
   @include flex(row, space-between, center);
   @include responsiveContainer(100%);
 
-  .container_1440 {
+  .container_desktop {
     width: calc(100% / 2 - 15px);
   }
-  .container_768 {
+  .container_tablet {
     width: calc(100% / 2 - 15px);
   }
-  .container_375 {
+  .container_mobile {
     width: 100%;
   }
   img {
@@ -71,7 +71,7 @@
   }
   @media screen and (max-width: 600px) {
     gap: 20px;
-    .container_375 {
+    .container_mobile {
       height: 200px;
     }
     .sticker_content {
@@ -124,7 +124,7 @@
     }
   }
 
-  .container_1440 {
+  .container_desktop {
     @include size(380px, 457px);
     position: absolute;
     bottom: -10px;
@@ -171,7 +171,7 @@
       left: centerAbsolute(944px);
       top: -288px;
     }
-    .container_768 {
+    .container_tablet {
       @include size(197px, 237px);
       position: absolute;
       bottom: -10px;
@@ -218,7 +218,7 @@
         @include size(279px);
       }
     }
-    .container_375 {
+    .container_mobile {
       @include size(162px, 195px);
       position: absolute;
 
@@ -265,7 +265,7 @@
   @include flex(row-reverse);
   gap: 30px;
 
-  .container_1440 {
+  .container_desktop {
     width: calc(100% / 2 - 15px);
   }
 
