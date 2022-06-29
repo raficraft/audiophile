@@ -4,8 +4,12 @@
   position: relative;
   border-radius: 5px;
   @include responsiveContainer(100%);
+
   img {
     border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   .sticker_content {
@@ -18,27 +22,272 @@
       margin: 0 0 0 95px;
     }
   }
+
+  @media screen and (max-width: 600px) {
+    height: 320px;
+    .container_375 {
+      height: 100%;
+    }
+    .sticker_content {
+      .sticker_item {
+        margin: 0 0 0 24px;
+      }
+    }
+  }
 }
 
 .separate_roundend {
   @include flex(row, space-between, center);
   @include responsiveContainer(100%);
+
+  .container_1440 {
+    width: calc(100% / 2 - 15px);
+  }
+  .container_768 {
+    width: calc(100% / 2 - 15px);
+  }
+  .container_375 {
+    width: 100%;
+  }
   img {
     border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   .sticker_content {
     @include flex(column, center, flex-start);
     background-color: var(--background-grey);
-    flex: 1;
     align-self: stretch;
-    margin-left: 30px;
     border-radius: 8px;
+    width: calc(100% / 2 - 15px);
   }
 
   .sticker_item {
     @include flex(column);
     gap: 2rem;
     margin: 0 0 0 95px;
+  }
+  @media screen and (max-width: 600px) {
+    gap: 20px;
+    .container_375 {
+      height: 200px;
+    }
+    .sticker_content {
+      width: 100%;
+      height: 200px;
+      .sticker_item {
+        margin: 0 0 0 24px;
+      }
+    }
+  }
+}
+
+.big_one {
+  position: relative;
+  background-color: var(--background-orange);
+  @include responsiveContainer(100%);
+  @include size(100%, 560px);
+  overflow: hidden;
+  border-radius: 8px;
+
+  .circle_container {
+    position: absolute;
+    @include size(944px);
+    content: " ";
+    @include flexCenter();
+    z-index: 100;
+    top: -36px;
+    left: -149px;
+    @include circle();
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:before {
+      position: absolute;
+      @include size(542px);
+      z-index: 200;
+      content: " ";
+      @include circle();
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    &:after {
+      position: absolute;
+      @include size(472px);
+      z-index: 200;
+      content: " ";
+      @include circle();
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .container_1440 {
+    @include size(380px, 457px);
+    position: absolute;
+    bottom: -10px;
+    left: 140px;
+    z-index: 1000;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .sticker_content {
+    @include fullAbsolute();
+    @include flex(column, center, flex-end);
+    z-index: 300;
+
+    .sticker_item {
+      @include size(349px, 306px);
+      @include flex(column);
+      right: 95px;
+      position: absolute;
+
+      h3 {
+        font-size: 56px;
+        color: white;
+        line-height: 58px;
+        letter-spacing: 2px;
+        margin: 0 0 1.5rem 0;
+      }
+
+      p {
+        opacity: 0.55;
+        margin: 0 0 40px 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    @include size(100%, 720px);
+    @include flex(column, flex-end, flex-start);
+    .circle_container {
+      left: centerAbsolute(944px);
+      top: -288px;
+    }
+    .container_768 {
+      @include size(197px, 237px);
+      position: absolute;
+      bottom: -10px;
+      left: 140px;
+      z-index: 1000;
+      top: 52px;
+      left: centerAbsolute(197px);
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .sticker_content {
+      position: static;
+      @include flexCenter(column);
+      width: 100%;
+      margin: 0 0 4rem 0;
+      .sticker_item {
+        position: static;
+        @include size(349px, 306px);
+        @include flexCenter(column);
+        h3,
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    @include size(100%, 600px);
+    @include flex(column, flex-end, flex-start);
+    .circle_container {
+      @include size(558px);
+      top: -119px;
+      left: centerAbsolute(558px);
+      &:before {
+        @include size(320px);
+      }
+      &:after {
+        @include size(279px);
+      }
+    }
+    .container_375 {
+      @include size(162px, 195px);
+      position: absolute;
+
+      left: 140px;
+      z-index: 1000;
+      top: 65px;
+      left: centerAbsolute(162px);
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .sticker_content {
+      @include fullAbsolute();
+      @include flex(column, flex-end, center);
+
+      margin: 0;
+      .sticker_item {
+        width: 280px;
+        height: auto;
+        margin: 0 0 55px 0;
+        h3 {
+          font-size: 36px;
+          color: white;
+          line-height: 40px;
+          letter-spacing: 1.3px;
+          margin: 0 0 1.5rem 0;
+          width: 200px;
+          text-align: center;
+        }
+
+        p {
+          opacity: 0.55;
+          margin: 0 0 1.5rem 0;
+        }
+      }
+    }
+  }
+}
+
+.best_product {
+  @include flex(row-reverse);
+  gap: 30px;
+
+  .container_1440 {
+    width: calc(100% / 2 - 15px);
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sticker_content {
+    width: calc(100% / 2 - 15px);
+    align-self: stretch;
+    @include flexCenter();
+    border-radius: 8px;
+    padding: 9rem 3rem;
+    h3 {
+      width: 80%;
+      margin: 0 0 1.5rem 0;
+    }
+    p {
+      color: lighten(black, 50%);
+    }
   }
 }

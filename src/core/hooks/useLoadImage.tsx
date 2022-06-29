@@ -7,13 +7,16 @@ export default function useLoadImage(src: string) {
     src: src,
   });
 
-  function loadImage(src: string) {
+  async function loadImage(src: string) {
     let img = new Image();
     img.src = src;
 
-    img.onload = function () {
+    try {
+      await img.decode();
       setImgInfo((S) => ({ ...S, x: img.width, y: img.height }));
-    };
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

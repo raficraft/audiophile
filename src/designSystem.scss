@@ -125,6 +125,11 @@ a {
 .text_white {
   color: var(--text-light);
 }
+
+.text_orange {
+  color: var(--text-orange);
+}
+
 .text_white__smooth {
   font-style: normal;
   font-weight: 500;
@@ -411,24 +416,28 @@ label {
   }
 }
 
-.responsive_img {
+.responsive_img,
+.container_responsive_img {
   object-fit: cover;
   width: 100%;
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .size_375 {
+  .size_375,
+  .container_responsive_img--375 {
     display: block;
   }
 }
 @media screen and (min-width: 601px) and (max-width: 960px) {
-  .size_768 {
+  .size_768,
+  .container_responsive_img--768 {
     display: block;
   }
 }
 @media screen and (min-width: 961px) {
-  .size_1440 {
+  .size_1440,
+  .container_responsive_img--1440 {
     display: block;
   }
 }

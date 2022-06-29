@@ -3,7 +3,10 @@ import S from "./Sticker_product.module.scss";
 
 interface propsTypes {
   cssName: string;
-  title: string;
+  title: JSX.Element;
+  button?: JSX.Element;
+  text?: string;
+
   multiSrc: {
     src: { x: number; y: number; src: string }[];
     media: number;
@@ -14,6 +17,8 @@ interface propsTypes {
 export default function Sticker_product({
   cssName,
   title,
+  text,
+  button,
   multiSrc,
 }: propsTypes) {
   console.log(cssName);
@@ -25,7 +30,12 @@ export default function Sticker_product({
 
       return image.src.map((el, key) => {
         return (
-          <div className={S.img_container}>
+          <div
+            className={`container_responsive_img 
+            container_responsive_img--${image.media} ${
+              S[`container_${image.media}`]
+            } `}
+          >
             <img
               key={key}
               src={el.src}
@@ -41,13 +51,13 @@ export default function Sticker_product({
 
   return (
     <div className={S[cssName]}>
+      {cssName === "big_one" && <div className={S.circle_container}></div>}
       {makeImg()}
       <div className={S.sticker_content}>
         <div className={S.sticker_item}>
-          <h3>{title}</h3>
-          <button type="button" className="btn btn_secondary">
-            see product
-          </button>
+          {title}
+          {text && <p className="text text_white">{text}</p>}
+          {button && button}
         </div>
       </div>
     </div>
