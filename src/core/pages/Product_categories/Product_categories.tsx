@@ -1,7 +1,5 @@
-import { current } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useLocation } from "react-router";
 import Sticker_product from "../../Component/Sticker_product/Sticker_product";
 
 import S from "./Product_categories.module.scss";
