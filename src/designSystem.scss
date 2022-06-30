@@ -334,8 +334,8 @@ label {
   width: 100%;
   min-height: 100%;
   height: 100%;
-
   @include flex(column, flex-start, flex-start, nowrap);
+  align-self: stretch;
 }
 
 #demo {
@@ -347,6 +347,11 @@ label {
   display: flex;
   background-color: var(--background-dark);
   min-height: 226px;
+}
+
+#portal_target {
+  @include flexCenter(column);
+  position: relative;
 }
 
 .wrapper_layout {

@@ -21,9 +21,15 @@ export function useFetch(cat: any) {
       if (res.ok) {
         setState((S) => ({
           ...S,
-          loading: false,
           currentData: data,
         }));
+
+        setTimeout(() => {
+          setState((S) => ({
+            ...S,
+            loading: false,
+          }));
+        }, 500);
       } else {
         setState((S) => ({
           ...S,

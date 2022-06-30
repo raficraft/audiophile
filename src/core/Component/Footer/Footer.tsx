@@ -7,7 +7,7 @@ import S from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <section id="header_layout" className="wrapper_layout footer_layout">
+    <section className="wrapper_layout footer_layout">
       <div className="wrapper_inside">
         <div className="footer_emphasis__color"></div>
         <div className={S.footer_content}>
