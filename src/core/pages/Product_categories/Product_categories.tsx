@@ -1,164 +1,94 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useFetch } from "../../hooks/useFetch/useFetch";
+import List_product_category from "../../Component/List_product_category/List_product_category";
+import { useJSONType } from "../../Typescript/types/types";
+import GradientLoader from "../../Component/Loader/Gradient_loader";
+import Navigation_home from "../../Component/Navigation_home/Navigation_home";
 import Sticker_product from "../../Component/Sticker_product/Sticker_product";
 
 import S from "./Product_categories.module.scss";
 
+import image_best_gear_desktop from "../../../assets/shared/desktop/image-best-gear.jpg";
+import image_best_gear_tablet from "../../../assets/shared/desktop/image-best-gear.jpg";
+import image_best_gear_mobil from "../../../assets/shared/desktop/image-best-gear.jpg";
+import useLoadImage from "../../hooks/useLoadImage";
+
 //Type of used field of JSON files sort by Category
-type usedType = {
-  image: string[];
-  category: string;
-  name: string;
-  description: string;
-};
 
-type imageType = {
-  src: { x: number; y: number; src: string }[];
-  media: string;
-  nameStyle: string;
-};
 export default function Product_categories() {
-  const [state, setState] = useState<{
-    error: boolean;
-    resultApi: usedType[];
-    loading: boolean;
-    currentImg: {}[];
-  }>({
-    loading: true,
-    error: false,
-    resultApi: [],
-    currentImg: [],
-  });
-
   const { category } = useParams();
+  const [fetchData] = useFetch(category);
+  const [currentData, setCurrentData] = useState<useJSONType[]>([]);
 
-  function getCategory(data: usedType[]) {
+  const best_gear_images_array = [
+    {
+      src: useLoadImage(image_best_gear_desktop),
+      media: "desktop",
+      nameStyle: "size_desktop responsive_img",
+    },
+    {
+      src: useLoadImage(image_best_gear_mobil),
+      media: "tablet",
+      nameStyle: "size_tablet responsive_img",
+    },
+    {
+      src: useLoadImage(image_best_gear_tablet),
+      media: "mobile",
+      nameStyle: "size_mobile responsive_img",
+    },
+  ];
+
+  function getCategory(data: useJSONType[]) {
     return data.filter((el) => el.category === category);
   }
 
-  async function importImage(folder: string) {
-    try {
-      const i = await import(`../../../${folder.substring(1)}`);
-      return i.default;
-    } catch (error) {
-      console.log("zob du cul", error);
-    }
-  }
-
-  async function getImgInfo(folder: string) {
-    const imageImport = await importImage(folder);
-    let img = new Image();
-    img.src = imageImport;
-
-    let info = {
-      x: 0,
-      y: 0,
-      src: imageImport,
-    };
-
-    try {
-      img.onload = function () {
-        info.x = img.width;
-        info.y = img.height;
-      };
-    } catch (error) {
-      console.log(error);
-    }
-
-    return [info];
-  }
-
-  async function createImgInfo(data: usedType[]) {
-    const res = [];
-
-    for (const idx in data) {
-      if (Object.prototype.hasOwnProperty.call(data, idx)) {
-        const product = data[idx];
-        const tmp = [];
-        for (const key in product.image) {
-          if (Object.prototype.hasOwnProperty.call(product.image, key)) {
-            const folder: string = product.image[key].substring(1);
-
-            const test = await getImgInfo(folder);
-
-            const imgInfo: { src: {}; media: string; nameStyle: string } = {
-              src: test,
-              media: key,
-              nameStyle: `size_${key} responsiveImg`,
-            };
-            tmp.push(imgInfo);
-          }
-        }
-        res.push(tmp);
-      }
-    }
-    return res;
-  }
-
-  async function fetchData(): Promise<any> {
-    try {
-      const res = await fetch("/data.json", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        const currentData: usedType[] = getCategory(data);
-        const currentImg = await createImgInfo(currentData);
-
-        setState((S) => ({
-          ...S,
-          loading: false,
-          error: false,
-          resultApi: currentData,
-          currentImg: currentImg,
-        }));
-      } else {
-        setState((S) => ({
-          ...S,
-          error: data.error,
-          loading: true,
-        }));
-      }
-    } catch (error) {
-      console.log("Error parsing JSON:", error);
-    }
-  }
-
-  function buildSticker() {
-    const comp = [];
-
-    for (const key in state.resultApi) {
-      if (Object.prototype.hasOwnProperty.call(state.resultApi, key)) {
-        const details: usedType = state.resultApi[key];
-        const title = details.name;
-        const text = details.description;
-        const multiSrc: any = state.currentImg[key];
-
-        comp.push(
-          <Sticker_product
-            cssName="product_details"
-            title={<h3>{title}</h3>}
-            text={text}
-            multiSrc={multiSrc}
-          ></Sticker_product>
-        );
-      }
-    }
-    return comp;
-  }
-
   useEffect(() => {
-    fetchData();
-  }, []);
+    setCurrentData(getCategory(fetchData.currentData));
+  }, [fetchData.loading, category]);
   return (
-    <section className="wrapper_layout">
-      <div className="wrapper_inside">
-        <div className={S.product_details}>{buildSticker()}</div>
-      </div>
-    </section>
+    <>
+      <section id="header_categories" className="wrapper_layout push_loader">
+        <div className="wrapper_inside flexCenter">
+          <h1 className="text_white">{category}</h1>
+        </div>
+      </section>
+      <section id="portal_target" className="wrapper_layout">
+        <div className="wrapper_inside">
+          {fetchData.loading === true ? (
+            <GradientLoader></GradientLoader>
+          ) : (
+            <>
+              <List_product_category data={currentData}></List_product_category>
+              <div className={S.list_categories}>
+                <Navigation_home></Navigation_home>
+                <Sticker_product
+                  cssName="best_product"
+                  title={
+                    <h3>
+                      Bringing you the <span className="text_orange">best</span>{" "}
+                      audio gear
+                    </h3>
+                  }
+                  text={
+                    <p className="text text_white">
+                      Located at the heart of New York City, Audiophile is the
+                      premier store for high end headphones, earphones,
+                      speakers, and audio accessories. We have a large showroom
+                      and luxury demonstration rooms available for you to browse
+                      and experience a wide range of our products. Stop by our
+                      store to meet some of the fantastic people who make
+                      Audiophile the best place to buy your portable audio
+                      equipment.
+                    </p>
+                  }
+                  multiSrc={best_gear_images_array}
+                ></Sticker_product>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

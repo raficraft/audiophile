@@ -103,7 +103,12 @@ export default function Sticker_home() {
       <Sticker_product
         cssName="big_one"
         title={<h3>zx9 speaker</h3>}
-        text="Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound."
+        text={
+          <p className="text text_white">
+            Upgrade to premium speakers that are phenomenally built to deliver
+            truly remarkable sound.
+          </p>
+        }
         multiSrc={speakers_zx9_images_array}
         button={
           <button type="button" className="btn btn_secondary">
@@ -141,7 +146,14 @@ export default function Sticker_home() {
           </h3>
         }
         text={
-          "Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment."
+          <p className="text text_white">
+            Located at the heart of New York City, Audiophile is the premier
+            store for high end headphones, earphones, speakers, and audio
+            accessories. We have a large showroom and luxury demonstration rooms
+            available for you to browse and experience a wide range of our
+            products. Stop by our store to meet some of the fantastic people who
+            make Audiophile the best place to buy your portable audio equipment.
+          </p>
         }
         multiSrc={best_gear_images_array}
       ></Sticker_product>
