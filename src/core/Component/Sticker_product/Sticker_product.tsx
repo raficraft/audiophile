@@ -38,7 +38,6 @@ export default function Sticker_product({
               width={el.x}
               height={el.y}
               className={image.nameStyle}
-              loading="lazy"
             />
           </div>
         );
