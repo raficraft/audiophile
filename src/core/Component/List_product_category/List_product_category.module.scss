@@ -1,0 +1,7 @@
+@import "../../sass/abstract/function.scss";
+
+.list_categories {
+  @include flexCenter(column);
+  gap: 160px;
+  padding: 160px 0;
+}

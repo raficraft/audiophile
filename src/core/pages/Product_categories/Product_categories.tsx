@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useLocation } from "react-router";
-import Sticker_product from "../../Component/Sticker_product/Sticker_product";
-
-import S from "./Product_categories.module.scss";
 import { useFetch } from "../../hooks/useFetch/useFetch";
 import List_product_category from "../../Component/List_product_category/List_product_category";
 import { useJSONType } from "../../Typescript/types/types";
@@ -11,8 +7,9 @@ import { useJSONType } from "../../Typescript/types/types";
 //Type of used field of JSON files sort by Category
 
 export default function Product_categories() {
+  console.log("toto");
   const { category } = useParams();
-  const [fetchData] = useFetch();
+  const [fetchData] = useFetch(category);
   const [currentData, setCurrentData] = useState<useJSONType[]>([]);
 
   function getCategory(data: useJSONType[]) {
@@ -20,21 +17,26 @@ export default function Product_categories() {
   }
 
   useEffect(() => {
-    {
-      fetchData.loading === true
-        ? console.log("waiting please...")
-        : setCurrentData(getCategory(fetchData.currentData));
-    }
-  }, [fetchData, category]);
+    console.log(typeof category);
+    console.log("render cat");
+    setCurrentData(getCategory(fetchData.currentData));
+  }, [fetchData.loading, category]);
   return (
-    <section className="wrapper_layout">
-      <div className="wrapper_inside">
-        {fetchData.loading === true ? (
-          <h1>loading</h1>
-        ) : (
-          <List_product_category data={currentData}></List_product_category>
-        )}
-      </div>
-    </section>
+    <>
+      <section id="header_categories" className="wrapper_layout">
+        <div className="wrapper_inside flexCenter">
+          <h1 className="text_white">{category}</h1>
+        </div>
+      </section>
+      <section className="wrapper_layout">
+        <div className="wrapper_inside">
+          {fetchData.loading === true ? (
+            <h1>loading</h1>
+          ) : (
+            <List_product_category data={currentData}></List_product_category>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

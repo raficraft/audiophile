@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useJSONType } from "../../Typescript/types/types";
-import { useParams } from "react-router";
 
-export function useFetch() {
+export function useFetch(cat: any) {
   const [state, setState] = useState<{
     error: boolean;
     currentData: useJSONType[];
@@ -14,6 +13,7 @@ export function useFetch() {
   });
 
   async function fetchData() {
+    console.log("Call API");
     try {
       const res = await fetch("/data.json");
 
@@ -37,7 +37,11 @@ export function useFetch() {
   }
 
   useEffect(() => {
+    setState((S) => ({
+      ...S,
+      loading: true,
+    }));
     fetchData();
-  }, []);
+  }, [cat]);
   return [state];
 }

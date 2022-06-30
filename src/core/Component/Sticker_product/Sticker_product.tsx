@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { Sticker_product_type } from "../../Typescript/types/types";
 import S from "./Sticker_product.module.scss";
-
-interface propsTypes {
-  cssName: string;
-  title: JSX.Element;
-  button?: JSX.Element;
-  text?: string;
-  multiSrc: {
-    src: { x: number; y: number; src: string }[];
-    media: string;
-    nameStyle: string;
-  }[];
-}
 
 export default function Sticker_product({
   cssName,
   title,
   text,
   button,
+  subTitle = "",
   multiSrc,
-}: propsTypes) {
+}: Sticker_product_type) {
   function makeImg() {
-    console.log(multiSrc);
+    // console.log(multiSrc);
     return multiSrc.map((image, key) => {
       return image.src.map((el, key) => {
-        console.log(image);
+        // console.log(image);
         return (
           <div
             className={`container_responsive_img 
@@ -51,8 +41,11 @@ export default function Sticker_product({
       {makeImg()}
       <div className={S.sticker_content}>
         <div className={S.sticker_item}>
-          {title}
-          {text && <p className="text text_white">{text}</p>}
+          {subTitle && (
+            <p className={`text_overline ${S.subtitle}`}>{subTitle}</p>
+          )}
+          {title && title}
+          {text && text}
           {button && button}
         </div>
       </div>

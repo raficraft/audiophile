@@ -263,6 +263,7 @@
 
 .best_product {
   @include flex(row-reverse);
+
   gap: 30px;
 
   .container_desktop {
@@ -290,4 +291,44 @@
       color: lighten(black, 50%);
     }
   }
+}
+
+.product_details,
+.product_details_reverse {
+  @include responsiveContainer(100%);
+  @include flex(row);
+  gap: 30px;
+  .container_desktop {
+    width: calc(100% / 2 - 15px);
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sticker_content {
+    align-self: stretch;
+    @include flexCenter();
+    padding: 0 3rem;
+    width: calc(100% / 2 - 15px);
+    .sticker_item {
+      .subtitle {
+        margin: 0 0 1rem 0;
+      }
+      h3 {
+        margin: 0 0 2rem 0;
+      }
+
+      button {
+        margin: 2.5rem 0 0 0;
+      }
+    }
+  }
+}
+
+.product_details_reverse {
+  @include flex(row-reverse);
 }

@@ -12,5 +12,28 @@ export type ConsumedCategorie = {
   slug: string;
   name: string;
   description: string;
+  new: boolean;
   currentImg: { src: {}; media: string; nameStyle: string }[];
+};
+
+export type Sticker_product_type = {
+  cssName: string;
+  subTitle?: string;
+  title: JSX.Element;
+  button?: JSX.Element;
+  text?: JSX.Element;
+  multiSrc: {
+    src: { x: number; y: number; src: string }[];
+    media: string;
+    nameStyle: string;
+  }[];
+};
+
+export type FetchData_type = {
+  state: {
+    currentData: useJSONType[];
+    loading: boolean;
+    error: boolean;
+  };
+  setState: (state: {}[]) => void;
 };

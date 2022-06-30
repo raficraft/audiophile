@@ -1,16 +1,17 @@
 //Get a specific element of JSON product DATA
+//If key doesn't exist attribuattes a empty array
 export function extractConsumedData(data: any[], extractKey: string[]) {
   const extractedData: any[] = [];
-  const createObj = {};
 
   for (const key in data) {
+    const createObj = {};
     if (Object.prototype.hasOwnProperty.call(data, key)) {
       const product = data[key];
 
       for (let i = 0; i < extractKey.length; i++) {
         const objKey = extractKey[i];
 
-        if (product[objKey]) {
+        if (product[objKey] || product[objKey] === false) {
           Object.assign(createObj, { [objKey]: product[objKey] });
         } else {
           Object.assign(createObj, { [objKey]: [] });
@@ -20,11 +21,18 @@ export function extractConsumedData(data: any[], extractKey: string[]) {
       extractedData[Number(key)] = createObj;
     }
   }
-  return extractedData;
+  const orderedData = orderProduct(extractedData);
+  return orderedData;
+}
+
+export function orderProduct(productArray: any[]) {
+  let first = productArray.filter((el) => el.new === true);
+  let next = productArray.filter((el) => el.new === false);
+  return [...first, ...next];
 }
 
 //Get path of image contain in json data by fields
-// launch getImgInfo who launch importImg
+//launch getImgInfo who launch importImg
 export async function createImgInfo(data: any[], fields: string) {
   const res = [];
 
