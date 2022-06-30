@@ -1,0 +1,93 @@
+@import "../../sass/abstract/function.scss";
+
+$border: 20px;
+$size: 300px;
+
+.gradient_loader {
+  @include responsiveContainer(100%);
+  position: absolute;
+  min-height: 100vh;
+  background-color: white;
+  @include flexCenter();
+
+  .loader_text {
+    @include size($size);
+    @include flexCenter();
+    position: absolute;
+    margin: auto auto;
+    z-index: 5000;
+    p {
+      font-size: 1.25rem;
+    }
+  }
+
+  .container {
+    position: relative;
+    @include size($size);
+    content: " ";
+    position: absolute;
+    top: 5rem;
+    left: centerAbsolute("300px");
+    margin: auto auto;
+  }
+
+  .content {
+    position: relative;
+    @include size($size);
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: centerAbsolute("300px");
+    margin: auto auto;
+    border-radius: 50%;
+    background: linear-gradient(
+      #eeeeee,
+      var(--background-orange-light),
+      var(--background-orange)
+    );
+    animation: rotateGradientLoader 1s linear infinite;
+
+    span {
+      position: absolute;
+      @include size("100%");
+      top: 0;
+      left: 0;
+      content: " ";
+      margin: 20px auto;
+      border-radius: 50%;
+      background: linear-gradient(#ffc593, #bc7198, #5a77ff);
+      margin: 0;
+    }
+    span:nth-child(1) {
+      filter: blur(5px);
+    }
+    span:nth-child(2) {
+      filter: blur(10px);
+    }
+    span:nth-child(3) {
+      filter: blur(25px);
+    }
+    span:nth-child(4) {
+      filter: blur(50px);
+    }
+    &:after {
+      @include emptyContent();
+      top: $border;
+      left: $border;
+      right: $border;
+      bottom: $border;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: 1px 1px 10px 4px inset rgba(124, 124, 124, 1);
+    }
+  }
+}
+
+@keyframes rotateGradientLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

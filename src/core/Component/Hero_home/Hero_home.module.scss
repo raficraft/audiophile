@@ -1,0 +1,97 @@
+@import "../../sass/abstract/function.scss";
+
+.hero_content {
+  @include flexCenter();
+  position: relative;
+  height: 639px;
+
+  @media screen and (max-width: 768px) {
+    @include responsiveContainer(100%);
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 510px;
+  }
+
+  .img_container {
+    width: 100%;
+    height: 639px;
+
+    @media screen and (max-width: 600px) {
+      height: 510px;
+      width: 80%;
+      margin: auto;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
+
+    .responsive_img {
+      object-fit: cover;
+      width: 100%;
+      display: none;
+    }
+    @media screen and (max-width: 600px) {
+      .size_375 {
+        display: block;
+      }
+    }
+    @media screen and (min-width: 601px) and (max-width: 960px) {
+      .size_768 {
+        display: block;
+      }
+    }
+    @media screen and (min-width: 961px) {
+      .size_1440 {
+        display: block;
+      }
+    }
+  }
+
+  .overprint {
+    @include fullAbsolute();
+
+    @media screen and (max-width: 960px) {
+      @include flex(column, flex-start, center);
+    }
+
+    &_content {
+      @include flex(column);
+      margin: 128px 0 0 0;
+      @include responsiveContainer(398px);
+      gap: 24px;
+
+      & p:nth-last-child(2) {
+        @include responsiveContainer(349px);
+      }
+
+      a {
+        margin: 1rem 0 0 0;
+      }
+
+      @media screen and (max-width: 960px) {
+        @include flexCenter(column);
+        p,
+        h1 {
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        @include responsiveContainer(328px);
+        @include flexCenter(column);
+        gap: 16px;
+
+        p,
+        h1 {
+          text-align: center;
+        }
+
+        a {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

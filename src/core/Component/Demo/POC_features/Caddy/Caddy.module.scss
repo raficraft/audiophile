@@ -45,6 +45,7 @@
     .product_details {
       @include flex(column);
       gap: 0.5rem;
+      flex: 1;
       p {
         font-weight: bold;
         font-size: 14px;
@@ -92,6 +93,19 @@
     @include flex(row, space-between, center);
     p {
       font-weight: bold;
+    }
+  }
+
+  .SVG_container {
+    @include size(1rem);
+    @include flexCenter();
+    color: rgb(133, 133, 133);
+    margin: 0 1.25rem 0 0;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      color: rgb(192, 74, 74);
+      transition: 0.5s;
     }
   }
 }

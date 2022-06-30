@@ -1,8 +1,8 @@
-$space: 8px;
-
 @function centerAbsolute($size) {
   @return calc(50% - #{$size} / 2);
 }
+
+$space: 8px;
 
 @function spacing($X) {
   @return calc(#{$X} * #{$space});
@@ -58,17 +58,14 @@ $space: 8px;
   border-radius: 50%;
 }
 
-@mixin responsiveContainer($width, $square: false) {
+@mixin responsiveContainer($width) {
   max-width: $width;
   width: 100%;
-  @if $square != false {
-    max-height: $width;
-    height: 100%;
-  }
 }
 
-@mixin flexCenter() {
+@mixin flexCenter($direction: row) {
   display: flex;
+  flex-direction: $direction;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;

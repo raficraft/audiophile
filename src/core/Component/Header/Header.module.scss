@@ -1,0 +1,27 @@
+@import "../../sass/abstract/function.scss";
+
+.header {
+  @include flex(row, space-between, center);
+  position: relative;
+
+  .nav_container {
+    @include flexCenter(column);
+  }
+
+  .logo {
+    @include flexCenter();
+    height: 25px;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 0 0 60px;
+      flex: 1;
+    }
+
+    @media screen and (max-width: 600px) {
+      margin: 0;
+    }
+  }
+  .SVG_container {
+    @include flexCenter();
+  }
+}

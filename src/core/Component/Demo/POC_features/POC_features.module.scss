@@ -13,6 +13,11 @@
   }
 }
 
+.wrapper_caddy {
+  width: 100%;
+  @include flexCenter();
+}
+
 .listProduct {
   @include flex(row, center, center);
   gap: 3rem;

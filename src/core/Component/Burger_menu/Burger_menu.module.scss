@@ -1,0 +1,35 @@
+@import "../../sass/abstract/function.scss";
+
+.burger_menu {
+  @include size(16px, 15px);
+  content: " ";
+  @include flex(column, space-between, center);
+  transition: 0.5s;
+  cursor: pointer;
+  position: absolute;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    position: static;
+  }
+
+  span {
+    @include size(100%, 3px);
+    content: " ";
+    background-color: var(--background-light);
+  }
+
+  &[data-isopen="true"] {
+    span {
+      background-color: var(--background-orange);
+    }
+  }
+
+  &[data-isopen="false"] {
+    span {
+      background-color: var(--background-light);
+    }
+  }
+}

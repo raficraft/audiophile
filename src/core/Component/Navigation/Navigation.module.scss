@@ -1,0 +1,37 @@
+@import "../../sass/abstract/function.scss";
+
+.nav_header,
+.nav_footer {
+  @include flex(row, flex-start, center, nowrap);
+  gap: 34px;
+  align-self: flex-start;
+
+  a {
+    font-size: 13px;
+    color: white;
+    line-height: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.5s;
+    &:hover {
+      transition: 0.5s;
+      color: var(--text-orange);
+    }
+  }
+}
+
+.nav_header {
+  flex: 1;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav_footer {
+    @include flexCenter(column);
+    margin: auto auto 48px auto;
+    gap: 1rem;
+  }
+}
