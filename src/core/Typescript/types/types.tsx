@@ -2,6 +2,7 @@ export type useJSONType = {
   id: number;
   image: string[];
   categoryImage: string[];
+  slug: string;
   category: string;
   name: string;
   description: string;

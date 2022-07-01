@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
 import { ConsumedCategorie, useJSONType } from "../../Typescript/types/types";
 import {
   createImgInfo,
@@ -41,6 +42,7 @@ export default function List_product_category({ data }: any) {
       if (Object.prototype.hasOwnProperty.call(currentData, key)) {
         const details: ConsumedCategorie = currentData[key];
         const title = details.name;
+        const slug = details.slug;
         const text = details.description;
         const subtitle = details.new ? "new product" : "";
         const multiSrc: any = currentData[key].currentImg;
@@ -59,9 +61,9 @@ export default function List_product_category({ data }: any) {
             text={<p className="text text_dark__smooth">{text}</p>}
             multiSrc={multiSrc}
             button={
-              <button type="button" className="btn btn_primary">
+              <NavLink to={`/product/${slug}`} className="btn btn_primary">
                 see product
-              </button>
+              </NavLink>
             }
           ></Sticker_product>
         );
