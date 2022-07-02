@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useJSONType } from "../../Typescript/types/types";
+import { ConsumedProduct } from "../../Typescript/types/types";
 
 export function useFetch(relaunch: any) {
   const [state, setState] = useState<{
     error: boolean;
-    currentData: useJSONType[];
+    currentData: ConsumedProduct[];
     loading: boolean;
   }>({
     currentData: [],

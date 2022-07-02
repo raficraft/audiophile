@@ -42,18 +42,21 @@ export default function Navigation_mobil({ isOpen, setter }: img_items) {
           <Navigation_mobil_item
             src={img_headphones}
             title={"headphones"}
+            link={"categories/headphones"}
           ></Navigation_mobil_item>
         </div>
         <div className="full_width">
           <Navigation_mobil_item
             src={img_speakers}
             title={"speakers"}
+            link={"categories/speakers"}
           ></Navigation_mobil_item>
         </div>
         <div className="full_width">
           <Navigation_mobil_item
             src={img_earphones}
             title={"earphones"}
+            link={"categories/earphones"}
           ></Navigation_mobil_item>
         </div>
       </nav>

@@ -13,18 +13,21 @@ export default function Navigation_home() {
         <Navigation_mobil_item
           src={img_headphones}
           title="headphones"
+          link={"categories/headphones"}
         ></Navigation_mobil_item>
       </div>
       <div className={S.item_container}>
         <Navigation_mobil_item
           src={img_speakers}
           title="speakers"
+          link={"categories/speakers"}
         ></Navigation_mobil_item>
       </div>
       <div className={S.item_container}>
         <Navigation_mobil_item
           src={img_earphones}
           title="earphones"
+          link={"categories/earphones"}
         ></Navigation_mobil_item>
       </div>
     </div>

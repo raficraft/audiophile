@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useFetch } from "../../hooks/useFetch/useFetch";
 import List_product_category from "../../Component/List_product_category/List_product_category";
-import { useJSONType } from "../../Typescript/types/types";
+import { ConsumedProduct } from "../../Typescript/types/types";
 import GradientLoader from "../../Component/Loader/Gradient_loader";
 import Navigation_home from "../../Component/Navigation_home/Navigation_home";
 import Sticker_product from "../../Component/Sticker_product/Sticker_product";
@@ -10,8 +10,8 @@ import Sticker_product from "../../Component/Sticker_product/Sticker_product";
 import S from "./Product_categories.module.scss";
 
 import image_best_gear_desktop from "../../../assets/shared/desktop/image-best-gear.jpg";
-import image_best_gear_tablet from "../../../assets/shared/desktop/image-best-gear.jpg";
-import image_best_gear_mobil from "../../../assets/shared/desktop/image-best-gear.jpg";
+import image_best_gear_tablet from "../../../assets/shared/tablet/image-best-gear.jpg";
+import image_best_gear_mobil from "../../../assets/shared/mobile/image-best-gear.jpg";
 import useLoadImage from "../../hooks/useLoadImage";
 
 //Type of used field of JSON files sort by Category
@@ -19,7 +19,7 @@ import useLoadImage from "../../hooks/useLoadImage";
 export default function Product_categories() {
   const { category } = useParams();
   const [fetchData] = useFetch(category);
-  const [currentData, setCurrentData] = useState<useJSONType[]>([]);
+  const [currentData, setCurrentData] = useState<ConsumedProduct[]>([]);
 
   const best_gear_images_array = [
     {
@@ -28,18 +28,18 @@ export default function Product_categories() {
       nameStyle: "size_desktop responsive_img",
     },
     {
-      src: useLoadImage(image_best_gear_mobil),
+      src: useLoadImage(image_best_gear_tablet),
       media: "tablet",
       nameStyle: "size_tablet responsive_img",
     },
     {
-      src: useLoadImage(image_best_gear_tablet),
+      src: useLoadImage(image_best_gear_mobil),
       media: "mobile",
       nameStyle: "size_mobile responsive_img",
     },
   ];
 
-  function getCategory(data: useJSONType[]) {
+  function getCategory(data: ConsumedProduct[]) {
     return data.filter((el) => el.category === category);
   }
 
@@ -53,8 +53,8 @@ export default function Product_categories() {
           <h1 className="text_white">{category}</h1>
         </div>
       </section>
-      <section id="portal_target" className="wrapper_layout">
-        <div className="wrapper_inside">
+      <section id="portal_target" className="wrapper_layout  categories_inside">
+        <div id="categories_inside" className="wrapper_inside">
           {fetchData.loading === true ? (
             <GradientLoader></GradientLoader>
           ) : (

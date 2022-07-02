@@ -6,12 +6,13 @@ export default function Sticker_product({
   cssName,
   title,
   text,
+  price = false,
   button,
   subTitle = "",
-  multiSrc,
+  multiSrc = [],
 }: Sticker_product_type) {
   function makeImg() {
-    // console.log(multiSrc);
+    console.log("in gategories images", multiSrc);
     return multiSrc.map((image, key) => {
       return image.src.map((el, key) => {
         // console.log(image);
@@ -38,7 +39,7 @@ export default function Sticker_product({
   return (
     <div className={S[cssName]}>
       {cssName === "big_one" && <div className={S.circle_container}></div>}
-      {makeImg()}
+      {multiSrc && makeImg()}
       <div className={S.sticker_content}>
         <div className={S.sticker_item}>
           {subTitle && (
@@ -46,6 +47,7 @@ export default function Sticker_product({
           )}
           {title && title}
           {text && text}
+          {price && price}
           {button && button}
         </div>
       </div>

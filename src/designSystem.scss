@@ -156,6 +156,10 @@ a {
   letter-spacing: -0.2px;
 }
 
+.bold {
+  font-weight: 900;
+}
+
 label {
   font-weight: 900;
   font-size: 12px;
@@ -172,7 +176,8 @@ label {
 }
 
 .btn_primary {
-  padding: 15px 30px;
+  padding: 15px 0px;
+  @include responsiveContainer(100%);
   color: white;
   background-color: var(--background-orange);
   transition: 0.5s;
@@ -324,6 +329,14 @@ label {
   width: 100%;
 }
 
+.flex {
+  display: flex;
+}
+
+.gap_16 {
+  gap: 16px;
+}
+
 .flexCenter {
   display: flex;
   justify-content: center;
@@ -352,6 +365,14 @@ label {
 #portal_target {
   @include flexCenter(column);
   position: relative;
+}
+#categories_inside {
+  @media screen and (max-width: 960px) {
+    padding: 160px 0;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 120px 1.5rem;
+  }
 }
 
 .wrapper_layout {
@@ -391,10 +412,21 @@ label {
   padding: 200px 0;
   gap: 4rem;
   @media screen and (max-width: 1280px) {
-    padding: 148px 0 96px 0;
+    padding: 148px 0 120px 0;
   }
   @media screen and (max-width: 600px) {
     padding: 92px 24px 120px 24px;
+  }
+}
+
+.product_content {
+  padding: 160px 0;
+  gap: 160px;
+  width: 100%;
+  @include flex(column);
+
+  @media screen and (max-width: 600px) {
+    padding: 80px 1.5rem;
   }
 }
 

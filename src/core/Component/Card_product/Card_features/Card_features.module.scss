@@ -1,0 +1,53 @@
+@import "../../../sass/abstract/function.scss";
+
+.features_card {
+  @include flex();
+
+  h3 {
+    margin: 0 0 2rem 0;
+  }
+  .bloc_text {
+    flex: 1;
+    @media screen and(max-width : 960px) {
+      @include responsiveContainer(100%);
+      margin: 0 0 7.5rem 0;
+    }
+
+    @media screen and(max-width : 600px) {
+      @include responsiveContainer(100%);
+      margin: 0 0 88px 0;
+    }
+  }
+  .list_features {
+    align-self: stretch;
+    @include flex(column);
+    padding: 0 125px;
+
+    @media screen and(max-width : 960px) {
+      @include responsiveContainer(100%);
+      @include flex(row);
+      padding: 0;
+
+      ul,
+      h3 {
+        @include responsiveContainer(50%);
+      }
+    }
+
+    @media screen and(max-width : 600px) {
+      @include responsiveContainer(100%);
+      @include flex(row);
+      padding: 0;
+
+      ul,
+      h3 {
+        @include responsiveContainer(100%);
+      }
+    }
+    li {
+      display: flex;
+      gap: 2rem;
+      margin: 0 0 0.5rem 0;
+    }
+  }
+}

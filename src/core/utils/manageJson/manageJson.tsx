@@ -31,6 +31,17 @@ export function orderProduct(productArray: any[]) {
   return [...first, ...next];
 }
 
+export async function objectImgInfo(path: string, key: string) {
+  const folder: string = path.substring(1);
+  const getSrc = await getImgInfo(folder);
+  const imgInfo: { src: {}; media: string; nameStyle: string } = {
+    src: getSrc,
+    media: key,
+    nameStyle: `size_${key} responsiveImg`,
+  };
+  return imgInfo;
+}
+
 //Get path of image contain in json data by fields
 //launch getImgInfo who launch importImg
 export async function createImgInfo(data: any[], fields: string) {
@@ -40,17 +51,25 @@ export async function createImgInfo(data: any[], fields: string) {
     if (Object.prototype.hasOwnProperty.call(data, idx)) {
       const product = data[idx];
       const tmp = [];
-      for (const key in product.image) {
-        if (Object.prototype.hasOwnProperty.call(product.image, key)) {
-          const folder: string = product[fields][key].substring(1);
-          const getSrc = await getImgInfo(folder);
+      for (const key in product[fields]) {
+        if (Object.prototype.hasOwnProperty.call(product[fields], key)) {
+          if (typeof product[fields][key] === "string") {
+            const relativePath = product[fields][key];
+            const imgInfo: { src: {}; media: string; nameStyle: string } =
+              await objectImgInfo(relativePath, key);
+            tmp.push(imgInfo);
+          } else {
+            const recursiveKeys = Object.keys(product[fields]);
+            const recursiveArray = [];
+            for (const keys of recursiveKeys) {
+              const newData = [];
+              newData.push({ [keys]: product[fields][keys] });
+              const recursiveTmp: any = await createImgInfo(newData, keys);
+              recursiveArray.push(recursiveTmp);
+            }
 
-          const imgInfo: { src: {}; media: string; nameStyle: string } = {
-            src: getSrc,
-            media: key,
-            nameStyle: `size_${key} responsiveImg`,
-          };
-          tmp.push(imgInfo);
+            return recursiveArray;
+          }
         }
       }
       res.push(tmp);

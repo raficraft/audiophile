@@ -263,8 +263,11 @@
 
 .best_product {
   @include flex(row-reverse);
-
   gap: 30px;
+
+  @media screen and (max-width: 960px) {
+    @include flex(column);
+  }
 
   .container_desktop {
     width: calc(100% / 2 - 15px);
@@ -277,18 +280,69 @@
     height: 100%;
   }
 
+  .container_tablet {
+    width: 100%;
+    height: 300px;
+    margin: 0 0 2rem 0;
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+  .container_mobil {
+    width: 100%;
+    height: 327px;
+    margin: 0 0 2rem 0;
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
   .sticker_content {
     width: calc(100% / 2 - 15px);
     align-self: stretch;
     @include flexCenter();
     border-radius: 8px;
     padding: 9rem 3rem;
+    @media screen and (max-width: 960px) {
+      @include responsiveContainer("563px");
+      padding: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+      @include responsiveContainer(100%);
+      margin: auto;
+      padding: 0;
+    }
     h3 {
       width: 80%;
       margin: 0 0 1.5rem 0;
+      @media screen and (max-width: 960px) {
+        text-align: center;
+        margin: auto;
+        @include responsiveContainer(70%);
+        margin: 0 auto 2rem;
+        @media screen and (max-width: 600px) {
+          @include responsiveContainer(100%);
+          margin: 0 0 1rem;
+          padding: 0;
+        }
+      }
     }
     p {
       color: lighten(black, 50%);
+      @media screen and (max-width: 960px) {
+        text-align: center;
+        margin: auto;
+        width: 85%;
+      }
+      @media screen and (max-width: 960px) {
+        width: 95%;
+      }
     }
   }
 }
@@ -314,16 +368,33 @@
     @include flexCenter();
     padding: 0 3rem;
     width: calc(100% / 2 - 15px);
+
+    @media screen and (max-width: 960px) {
+      @include responsiveContainer(100%);
+      padding: 0;
+    }
+
     .sticker_item {
+      @include responsiveContainer(100%);
+      @media screen and (max-width: 960px) {
+        @include flexCenter(column);
+      }
       .subtitle {
         margin: 0 0 1rem 0;
       }
-      h3 {
+      h3,
+      h2 {
         margin: 0 0 2rem 0;
+        @media screen and (max-width: 960px) {
+          text-align: center;
+        }
       }
 
       p {
         margin: 0 0 2.5rem 0;
+        @media screen and (max-width: 960px) {
+          text-align: center;
+        }
       }
     }
   }
@@ -331,4 +402,70 @@
 
 .product_details_reverse {
   @include flex(row-reverse);
+}
+
+.card_buy {
+  @include responsiveContainer(100%);
+  @include flex(row);
+  gap: 30px;
+  .container_desktop {
+    width: calc(100% / 2 - 15px);
+  }
+  //ratio 803 : 1072
+  .container_tablet {
+    width: 281px;
+    height: 480px;
+    aspect-ratio: 803 / 1072;
+    img {
+      aspect-ratio: 803 / 1072;
+    }
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sticker_content {
+    align-self: stretch;
+    @include flexCenter();
+    padding: 0 3rem;
+    width: calc(100% / 2 - 15px);
+    flex: 1;
+    @media screen and (max-width: 960px) {
+      padding: 0 2.5rem;
+    }
+    @media screen and (max-width: 600px) {
+      @include responsiveContainer(100%);
+      padding: 0;
+    }
+    .sticker_item {
+      @media screen and (max-width: 960px) {
+      }
+      @media screen and (max-width: 600px) {
+        @include responsiveContainer(100%);
+      }
+      .subtitle {
+        margin: 0 0 1rem 0;
+      }
+
+      h6 {
+        margin: 0 0 1rem 0;
+      }
+
+      h3,
+      h2 {
+        margin: 0 0 2rem 0;
+        @media screen and (max-width: 600px) {
+          @include responsiveContainer(82%);
+        }
+      }
+
+      p {
+        margin: 0 0 2.5rem 0;
+      }
+    }
+  }
 }

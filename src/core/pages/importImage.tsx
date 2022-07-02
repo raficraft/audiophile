@@ -19,8 +19,8 @@ import image_speakers_mobile from "../../assets/home/mobile/image-speaker-zx7.jp
 //Best Gear Image all format
 
 import image_best_gear_desktop from "../../assets/shared/desktop/image-best-gear.jpg";
-import image_best_gear_tablet from "../../assets/shared/desktop/image-best-gear.jpg";
-import image_best_gear_mobil from "../../assets/shared/desktop/image-best-gear.jpg";
+import image_best_gear_tablet from "../../assets/shared/tablet/image-best-gear.jpg";
+import image_best_gear_mobil from "../../assets/shared/mobile/image-best-gear.jpg";
 
 import useLoadImage from "../hooks/useLoadImage";
 import Sticker_product from "../Component/Sticker_product/Sticker_product";
@@ -33,12 +33,12 @@ export default function Sticker_home() {
       nameStyle: "size_desktop responsive_img",
     },
     {
-      src: useLoadImage(image_best_gear_mobil),
+      src: useLoadImage(image_best_gear_tablet),
       media: "tablet",
       nameStyle: "size_tablet responsive_img",
     },
     {
-      src: useLoadImage(image_best_gear_tablet),
+      src: useLoadImage(image_best_gear_mobil),
       media: "mobile",
       nameStyle: "size_mobile responsive_img",
     },
