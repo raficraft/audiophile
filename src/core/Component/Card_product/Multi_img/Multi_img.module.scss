@@ -1,0 +1,34 @@
+@import "../../../sass/abstract/function.scss";
+
+.gallery_images {
+  @include responsiveContainer(100%);
+  @include flex(row, space-between, space-between, nowrap);
+
+  @media screen and (max-width: 640px) {
+    @include flex(column, space-between, space-between, nowrap);
+    gap: 20px;
+  }
+  &__left {
+    @include flex(column, space-between);
+    width: 40%;
+    @media screen and (max-width: 640px) {
+      width: 100%;
+      gap: 20px;
+    }
+  }
+
+  &__right {
+    width: 57%;
+    @media screen and (max-width: 640px) {
+      width: 100%;
+    }
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    align-self: stretch;
+  }
+}

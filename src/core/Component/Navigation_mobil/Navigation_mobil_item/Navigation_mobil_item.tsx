@@ -6,9 +6,10 @@ import S from "./Navigation_mobil_item.module.scss";
 interface img_items {
   src: string;
   title: string;
+  link: string;
 }
 
-export default function Navigation_mobil_item({ src, title }: img_items) {
+export default function Navigation_mobil_item({ src, title, link }: img_items) {
   const [imgInfo] = useLoadImage(src);
 
   return (
@@ -21,9 +22,11 @@ export default function Navigation_mobil_item({ src, title }: img_items) {
 
       <div className={S.item_content}>
         <p className={S.title}>{title}</p>
-        <button type="button" className="btn btn_arrow">
-          shop
-        </button>
+        <NavLink to={link}>
+          <a type="button" className="btn btn_arrow">
+            shop
+          </a>
+        </NavLink>
       </div>
     </NavLink>
   );

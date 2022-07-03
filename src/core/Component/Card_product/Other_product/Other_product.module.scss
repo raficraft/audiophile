@@ -1,0 +1,64 @@
+@import "../../..//sass/abstract/function.scss";
+
+.container {
+  width: 100%;
+  @include flex(column, space-between);
+  header {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 4rem 0;
+  }
+}
+
+.content {
+  @include flex(row, space-between);
+  width: 100%;
+  gap: 2rem;
+
+  @media screen and(max-width: 767px) {
+    @include flex(column);
+  }
+
+  .item {
+    @include flexCenter(column);
+    flex: 1;
+
+    @media screen and(max-width: 767px) {
+      @include responsiveContainer(100%);
+    }
+
+    h5 {
+      margin: 2.5rem 0 2rem 0;
+    }
+
+    img {
+      border-radius: 8px;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .container_mobile {
+      display: block !important;
+    }
+    .container_tablet {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    .container_tablet {
+      display: block !important;
+    }
+  }
+  @media screen and (min-width: 961px) {
+    .container_desktop {
+      display: block !important;
+    }
+  }
+}

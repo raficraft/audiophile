@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useJSONType } from "../../Typescript/types/types";
+import { ConsumedProduct } from "../../Typescript/types/types";
 
-export function useFetch(cat: any) {
+export function useFetch(relaunch: any) {
   const [state, setState] = useState<{
     error: boolean;
-    currentData: useJSONType[];
+    currentData: ConsumedProduct[];
     loading: boolean;
   }>({
     currentData: [],
@@ -13,7 +13,6 @@ export function useFetch(cat: any) {
   });
 
   async function fetchData() {
-    console.log("Call API");
     try {
       const res = await fetch("/data.json");
 
@@ -48,6 +47,6 @@ export function useFetch(cat: any) {
       loading: true,
     }));
     fetchData();
-  }, [cat]);
+  }, [relaunch]);
   return [state];
 }

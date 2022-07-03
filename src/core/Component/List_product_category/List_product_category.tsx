@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { ConsumedCategorie, useJSONType } from "../../Typescript/types/types";
+import { NavLink } from "react-router-dom";
+import { ConsumedProduct } from "../../Typescript/types/types";
 import {
   createImgInfo,
   extractConsumedData,
@@ -16,7 +16,7 @@ export default function List_product_category({ data }: any) {
 
   async function buildData(data: any[]) {
     const currentImage = await createImgInfo(data, "categoryImage");
-    const consumedData: ConsumedCategorie[] = extractConsumedData(data, [
+    const consumedData: ConsumedProduct[] = extractConsumedData(data, [
       "id",
       "slug",
       "name",
@@ -24,6 +24,8 @@ export default function List_product_category({ data }: any) {
       "new",
       "currentImg",
     ]);
+
+    //for each product in this category
     if (currentImage.length === consumedData.length) {
       for (let i = 0; i < consumedData.length; i++) {
         consumedData[i].currentImg = currentImage[i];
@@ -39,8 +41,9 @@ export default function List_product_category({ data }: any) {
 
     for (const key in currentData) {
       if (Object.prototype.hasOwnProperty.call(currentData, key)) {
-        const details: ConsumedCategorie = currentData[key];
+        const details: ConsumedProduct = currentData[key];
         const title = details.name;
+        const slug = details.slug;
         const text = details.description;
         const subtitle = details.new ? "new product" : "";
         const multiSrc: any = currentData[key].currentImg;
@@ -59,9 +62,9 @@ export default function List_product_category({ data }: any) {
             text={<p className="text text_dark__smooth">{text}</p>}
             multiSrc={multiSrc}
             button={
-              <button type="button" className="btn btn_primary">
+              <NavLink to={`/product/${slug}`} className="btn btn_primary">
                 see product
-              </button>
+              </NavLink>
             }
           ></Sticker_product>
         );
