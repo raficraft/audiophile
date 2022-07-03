@@ -3,20 +3,14 @@
 .navigation_home {
   @include responsiveContainer(100%);
   @include flex(row, space-between);
+  gap: 30px;
   @media screen and(max-width: 767px) {
     @include flexCenter(column);
     gap: 68px;
   }
 
   .item_container {
-    @include responsiveContainer(350px);
-
-    @media screen and(max-width: 1280px) {
-      @include responsiveContainer(260px);
-    }
-    @media screen and(max-width: 960px) {
-      @include responsiveContainer(203px);
-    }
+    flex: 1;
     @media screen and(max-width: 767px) {
       @include responsiveContainer(100%);
     }

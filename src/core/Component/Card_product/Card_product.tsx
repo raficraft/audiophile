@@ -20,6 +20,7 @@ export default function Card_product({ data }: any) {
       "includes",
       "description",
       "new",
+      "others",
     ]);
 
     consumedData[0]["galleryImg"] = galleryImage;

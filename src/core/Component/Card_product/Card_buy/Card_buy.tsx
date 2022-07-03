@@ -17,6 +17,7 @@ import image_best_gear_desktop from "../../../../assets/shared/desktop/image-bes
 import image_best_gear_tablet from "../../../../assets/shared/tablet/image-best-gear.jpg";
 import image_best_gear_mobil from "../../../../assets/shared/mobile/image-best-gear.jpg";
 import useLoadImage from "../../../hooks/useLoadImage";
+import Other_product from "../Other_product/Other_product";
 
 export default function Card_buy({ data }: any) {
   console.log(data);
@@ -28,6 +29,7 @@ export default function Card_buy({ data }: any) {
   const inTheBox = data.includes;
   const currentImg: img_JSON_import = data.currentImg[0];
   const galleryImg: img_JSON_import[][] = data.galleryImg;
+  const others_product: any[] = data.others;
 
   const best_gear_images_array = [
     {
@@ -61,10 +63,10 @@ export default function Card_buy({ data }: any) {
       <Card_features features={features} inTheBox={inTheBox} />
       <Multi_img galleryImg={galleryImg} />
 
-      <div>
-        <h3>You may also like</h3>
-      </div>
+      <Other_product data={others_product} />
+
       <Navigation_home />
+
       <Sticker_product
         cssName="best_product"
         title={
