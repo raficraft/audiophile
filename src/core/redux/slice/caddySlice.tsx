@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface MockProduct {
   id: number;
   name: string;
+  slug?: string;
   price: number;
   qty: number;
   img?: any;
@@ -32,6 +33,7 @@ export const caddySlice = createSlice({
     addProduct: (state, action: PayloadAction<MockProduct>) => {
       const newProducts = {
         id: action.payload.id,
+        slug: action.payload.slug,
         name: action.payload.name,
         price: action.payload.price,
         qty: action.payload.qty,
@@ -61,6 +63,7 @@ export const caddySlice = createSlice({
         product.qty = action.payload.qty;
       }
     },
+
     clearCaddy: () => {
       return [];
     },

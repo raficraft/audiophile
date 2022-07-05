@@ -1,0 +1,12 @@
+@import "../../sass/abstract/function.scss";
+
+.notification {
+  background-color: red;
+  position: absolute;
+  padding: 2rem;
+  bottom: 0;
+  right: 0;
+  p {
+    color: white;
+  }
+}

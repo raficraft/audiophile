@@ -21,7 +21,9 @@ import Other_product from "../Other_product/Other_product";
 
 export default function Card_buy({ data }: any) {
   console.log(data);
+  const id = data.id;
   const title = data.name;
+  const slug = data.slug;
   const text = data.description;
   const price = data.price;
   const features = data.features;
@@ -58,7 +60,9 @@ export default function Card_buy({ data }: any) {
         multiSrc={currentImg}
         subTitle={subTitle}
         price={<h6>$ {price}</h6>}
-        button={<Add_product />}
+        button={
+          <Add_product id={id} name={title} price={price} qty={1} slug={slug} />
+        }
       ></Sticker_product>
       <Card_features features={features} inTheBox={inTheBox} />
       <Multi_img galleryImg={galleryImg} />

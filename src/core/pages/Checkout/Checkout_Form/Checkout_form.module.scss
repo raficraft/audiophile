@@ -1,0 +1,23 @@
+@import "../../../sass/abstract/function.scss";
+.checkout_form {
+  flex: 1;
+  padding: 54px 48px;
+  background-color: var(--background-light);
+  border-radius: 8px;
+  h3 {
+    margin: 0 0 2.5rem 0;
+  }
+  fieldset {
+    border: none;
+    legend {
+      text-transform: uppercase;
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  .input_container {
+    @include flex(row, space-between);
+    gap: 18px;
+    margin: 0 0 4rem 0;
+  }
+}
