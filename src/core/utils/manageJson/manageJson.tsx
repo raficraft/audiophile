@@ -25,6 +25,7 @@ export function extractConsumedData(data: any[], extractKey: string[]) {
   return orderedData;
 }
 
+//If product as new he's be placed on start of array
 export function orderProduct(productArray: any[]) {
   let first = productArray.filter((el) => el.new === true);
   let next = productArray.filter((el) => el.new === false);

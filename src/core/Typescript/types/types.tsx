@@ -25,6 +25,12 @@ export type Sticker_product_type = {
   }[];
 };
 
+export type image_import = {
+  x: number;
+  y: number;
+  src: string;
+};
+
 export type img_JSON_import = {
   src: { x: number; y: number; src: string }[];
   media: string;
@@ -53,4 +59,12 @@ export type input_type = {
 
 export type notification_type = {
   text: string;
+};
+
+export type cart_list_type = {
+  id: number;
+  slug?: string;
+  name: string;
+  price: number;
+  qty: number;
 };

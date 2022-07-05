@@ -1,0 +1,25 @@
+@import "../../../sass/abstract/function.scss";
+.input_number {
+  @include flexCenter();
+  @include responsiveContainer(120px);
+  button,
+  input {
+    border: none;
+    background-color: var(--background-grey);
+    height: 48px;
+  }
+  input {
+    text-align: center;
+    width: 56px;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 32px;
+    color: lighten(black, 65%);
+    &:hover {
+      color: var(--text-orange);
+    }
+  }
+}

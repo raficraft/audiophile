@@ -1,6 +1,17 @@
 @import "../../sass/abstract/function.scss";
 
 .cart {
-  background-color: red;
-  @include size(200px);
+  position: absolute;
+  right: 0;
+  background-color: white;
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 377px;
+
+  .cart_list__container {
+    @include flex(column);
+    gap: 1.5rem;
+    @include responsiveContainer(100%);
+  }
 }

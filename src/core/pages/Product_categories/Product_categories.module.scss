@@ -3,7 +3,7 @@
 .list_categories {
   @include flexCenter(column);
   gap: 160px;
-  min-height: 100vh;
+  min-height: 100%;
   content: " ";
   width: 100%;
 

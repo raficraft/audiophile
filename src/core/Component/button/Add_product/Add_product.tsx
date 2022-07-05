@@ -4,6 +4,7 @@ import { addProduct, MockProduct } from "../../../redux/slice/caddySlice";
 import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
 import Notification from "../../Notification/Notification";
+import S from "./Add_product.module.scss";
 
 export default function Add_product({
   id,
@@ -58,19 +59,6 @@ export default function Add_product({
     }
   }
 
-  function pushNotification(message: string) {
-    if (!showNotification.state) {
-      setShowNotification((S) => ({ ...S, state: true, message: message }));
-      setTimeout(() => {
-        setShowNotification((S) => ({
-          ...S,
-          state: false,
-          message: "",
-        }));
-      }, 5000);
-    }
-  }
-
   function increment(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       const maxQty = inputRef.current.getAttribute("max")!;
@@ -91,6 +79,19 @@ export default function Add_product({
     }
   }
 
+  function pushNotification(message: string) {
+    if (!showNotification.state) {
+      setShowNotification((S) => ({ ...S, state: true, message: message }));
+      setTimeout(() => {
+        setShowNotification((S) => ({
+          ...S,
+          state: false,
+          message: "",
+        }));
+      }, 5000);
+    }
+  }
+
   function addInstorage() {
     const oldItems = JSON.parse(localStorage.getItem("caddy") || "[]")
       ? JSON.parse(localStorage.getItem("caddy") || "[]")
@@ -101,11 +102,13 @@ export default function Add_product({
     localStorage.setItem("caddy", JSON.stringify(newItems));
   }
 
-  useEffect(() => {});
+  useEffect(() => {
+    addInstorage();
+  }, [products]);
   return (
     <>
       <div className={`flex gap_16`}>
-        <div className="input_number">
+        <div className={S.input_number}>
           <button
             type="button"
             onClick={(event) => {
