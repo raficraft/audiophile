@@ -1,0 +1,6 @@
+@import "../../sass/abstract/function.scss";
+
+.cart {
+  background-color: red;
+  @include size(200px);
+}

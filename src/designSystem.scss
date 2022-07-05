@@ -249,6 +249,7 @@ label {
 
 .bloc_input {
   @include flex(column, flex-start, flex-start);
+  margin: 0 0 24px 0;
 
   &__head {
     @include flex(row, space-between, center);
@@ -263,6 +264,7 @@ label {
     text-indent: 24px;
     font-size: 14px;
     font-weight: 700;
+    width: 100%;
     &:hover {
       border-color: var(--background-orange);
     }
@@ -274,9 +276,21 @@ label {
   }
 }
 
+.bloc_input__full {
+  @include responsiveContainer(100%);
+}
+
+.bloc_input__basic {
+  @include responsiveContainer(308px);
+}
+
+.bloc_input__xs {
+  @include responsiveContainer(208px);
+}
+
 .bloc_input__radio {
   position: relative;
-  @include flex(row, flex-start, center);
+  @include flex(row, flex-end, center);
 
   .fakeContainer {
     @include flex();
@@ -287,6 +301,7 @@ label {
     @include flex(row, flex-start, center);
     min-width: 260px;
     text-indent: 52px;
+    @include responsiveContainer(308px);
   }
 
   input[type="radio"] {

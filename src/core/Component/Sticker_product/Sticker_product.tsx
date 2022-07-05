@@ -12,7 +12,6 @@ export default function Sticker_product({
   multiSrc = [],
 }: Sticker_product_type) {
   function makeImg() {
-    console.log("in gategories images", multiSrc);
     return multiSrc.map((image, key) => {
       return image.src.map((el, key) => {
         // console.log(image);

@@ -15,6 +15,7 @@ export default function Card_product({ data }: any) {
     const consumedData: ConsumedProduct[] = extractConsumedData(data, [
       "id",
       "name",
+      "slug",
       "price",
       "features",
       "includes",

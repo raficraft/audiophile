@@ -39,3 +39,18 @@ export type FetchData_type = {
   };
   setState: (state: {}[]) => void;
 };
+
+export type input_type = {
+  type: string;
+  name: string;
+  placeholder?: string;
+  label?: string;
+  format?: string;
+  pattern?: string;
+  cssName?: string;
+  callback?: () => void;
+};
+
+export type notification_type = {
+  text: string;
+};
