@@ -5,6 +5,7 @@ import Cart from "../Cart/Cart";
 import Navigation from "../Navigation/Navigation";
 import Burger_Menu from "./../Burger_menu/Burger_menu";
 import S from "./Header.module.scss";
+import Modal from "../Modal/Modal";
 
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
@@ -35,7 +36,11 @@ export default function Header() {
           </header>
         </div>
       </section>
-      {showCart && <Cart />}
+      {showCart && (
+        <Modal>
+          <Cart></Cart>
+        </Modal>
+      )}
     </>
   );
 }
