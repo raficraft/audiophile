@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Dispatch } from "react";
+import { NavLink } from "react-router-dom";
 import { clearCaddy } from "../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../hooks/toolkit";
 import S from "./Cart.module.scss";
 import Cart_List from "./Cart_List/Cart_List";
 
-export default function Cart() {
+type Cart_props = {
+  callback: Dispatch<boolean>;
+};
+
+export default function Cart({ callback }: Cart_props) {
   const products = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
-  const [qtyInCart, setQtyInCart] = useState(getTotalProducts());
+  const [qtyInCart, setQtyInCart] = useState(0);
+  const [totalPriceCart, setTotalPriceCart] = useState(0);
 
   function emptyCaddy(event: React.MouseEvent<HTMLButtonElement>) {
     dispatch(clearCaddy());
@@ -36,23 +42,59 @@ export default function Cart() {
     });
   }
 
+  function getTotalPrice() {
+    return products.caddy
+      .filter((el: { qty: number }) => el.qty > 0)
+      .map((el) => el.qty * el.price)
+      .reduce((prev, curr) => prev + curr, 0);
+  }
+
+  useEffect(() => {
+    setQtyInCart(getTotalProducts());
+    setTotalPriceCart(getTotalPrice());
+  }, [products]);
+
   return (
     <div className={S.modal}>
       <section className="wrapper_layout">
         <div className="wrapper_inside relative">
-          <div className={S.cart}>
-            <header>
-              <p>Cart {qtyInCart}</p>
+          <div
+            className={S.cart}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            <header className={S.header_top}>
+              <p className="bold">
+                CART {"("}
+                {qtyInCart}
+                {")"}
+              </p>
               <button
+                className="text_dark__smooth"
                 onClick={(event) => {
                   emptyCaddy(event);
                 }}
               >
-                Remove ALL
+                Remove all
               </button>
             </header>
             <div className={S.cart_list__container}>{cart_listing()}</div>
-            <footer>TOTAL PRICE</footer>
+            <footer>
+              <div className={S.total_price}>
+                <p>TOTAL</p>
+                <p className="bold">${totalPriceCart}</p>
+              </div>
+              <NavLink
+                to="/checkout"
+                className="btn btn_primary full_width flex"
+                onClick={() => {
+                  callback(false);
+                }}
+              >
+                checkout
+              </NavLink>
+            </footer>
           </div>
         </div>
       </section>

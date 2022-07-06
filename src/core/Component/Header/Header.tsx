@@ -37,8 +37,8 @@ export default function Header() {
         </div>
       </section>
       {showCart && (
-        <Modal>
-          <Cart></Cart>
+        <Modal setter={setShowCart}>
+          <Cart callback={setShowCart}></Cart>
         </Modal>
       )}
     </>

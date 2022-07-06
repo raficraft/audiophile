@@ -1,11 +1,5 @@
 import React, { useRef, useEffect, useState, Dispatch } from "react";
-import {
-  addProduct,
-  MockProduct,
-  removeProduct,
-  updateQty,
-} from "../../../redux/slice/caddySlice";
-import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
+import { MockProduct, updateQty } from "../../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
 import S from "./Update_cart.module.scss";
 
@@ -34,9 +28,11 @@ export default function Update_cart({
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       if (Number(inputRef.current.value) >= 1) {
-        const newVal = String(parseInt(inputRef.current.value) - 1);
-        inputRef.current.value = newVal;
+        const addOneToCurrentValue = String(
+          parseInt(inputRef.current.value) - 1
+        );
         const qtyUpdate = parseInt(inputRef.current.value);
+        inputRef.current.value = addOneToCurrentValue;
         if (qtyUpdate > 0) {
           dispatch(updateQty({ id, qty: qtyUpdate }));
         } else {
@@ -51,22 +47,19 @@ export default function Update_cart({
     if (inputRef && inputRef.current) {
       const maxQty = inputRef.current.getAttribute("max")!;
       if (Number(inputRef.current.value) >= 0) {
-        const addOneItem = String(parseInt(inputRef.current.value) + 1);
+        const addOneToCurrentValue = String(
+          parseInt(inputRef.current.value) + 1
+        );
 
-        if (Number(addOneItem) <= Number(maxQty)) {
-          inputRef.current.value = addOneItem;
+        if (Number(addOneToCurrentValue) <= Number(maxQty)) {
+          inputRef.current.value = addOneToCurrentValue;
           const qtyUpdate = parseInt(inputRef.current.value);
           dispatch(updateQty({ id, qty: qtyUpdate }));
+        } else {
+          console.log("notification");
         }
       }
     }
-  }
-
-  function deleteProduct(
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: number
-  ) {
-    dispatch(removeProduct(id));
   }
 
   function addInstorage() {

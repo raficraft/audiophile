@@ -17,12 +17,23 @@ export default function Cart_List({
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
+  // remove specific word and contract Mark designation
   function shortName() {
-    console.log("change name");
+    console.log("change name", name);
 
-    const removeWord = ["headphones", "earphones", "speakers"];
-    const nameArr = name.split(" ");
-    return nameArr[0];
+    const removeWord = ["headphones", "earphones", "speaker"];
+
+    for (const iterator of removeWord) {
+      if (name.toLowerCase().includes(iterator.toLowerCase())) {
+        return name
+          .toLowerCase()
+          .replace(iterator.toLowerCase(), "")
+          .replace("mark", "MK")
+          .toUpperCase();
+      }
+    }
+
+    return name.toUpperCase();
   }
 
   function deleteProduct() {
