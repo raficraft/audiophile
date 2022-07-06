@@ -1,10 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct, MockProduct } from "../../../redux/slice/caddySlice";
 import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
 import Notification from "../../Notification/Notification";
 import S from "./Add_product.module.scss";
+
+import { UI_context, UI_context_type } from "../../../context/UI_Provider";
 
 export default function Add_product({
   id,
@@ -16,6 +18,8 @@ export default function Add_product({
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+  const { UI, callback } = useContext(UI_context) as UI_context_type;
   const [showNotification, setShowNotification] = useState({
     state: false,
     message: "",
@@ -29,7 +33,6 @@ export default function Add_product({
     if (inputRef && inputRef.current) {
       inputRef.current.value = "1";
     }
-    console.log("hein", products);
 
     const isValidCaddy = controlCaddy(products);
 
@@ -80,15 +83,8 @@ export default function Add_product({
   }
 
   function pushNotification(message: string) {
-    if (!showNotification.state) {
-      setShowNotification((S) => ({ ...S, state: true, message: message }));
-      setTimeout(() => {
-        setShowNotification((S) => ({
-          ...S,
-          state: false,
-          message: "",
-        }));
-      }, 5000);
+    if (!UI.notification.show) {
+      callback.openNotification(message);
     }
   }
 
@@ -144,9 +140,7 @@ export default function Add_product({
           Add to cart
         </button>
       </div>
-      {showNotification.state && (
-        <Notification text={showNotification.message} />
-      )}
+      {UI.notification.show && <Notification text={UI.notification.message} />}
     </>
   );
 }

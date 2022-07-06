@@ -1,20 +1,22 @@
-import React, { useState, useEffect, Dispatch } from "react";
+import React, { useState, useEffect, Dispatch, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { clearCaddy } from "../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../hooks/toolkit";
 import S from "./Cart.module.scss";
 import Cart_List from "./Cart_List/Cart_List";
+import { UI_context, UI_context_type } from "../../context/UI_Provider";
 
 type Cart_props = {
   callback: Dispatch<boolean>;
 };
 
-export default function Cart({ callback }: Cart_props) {
+export default function Cart() {
   const products = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
   const [qtyInCart, setQtyInCart] = useState(0);
   const [totalPriceCart, setTotalPriceCart] = useState(0);
+  const { UI, callback } = useContext(UI_context) as UI_context_type;
 
   function emptyCaddy(event: React.MouseEvent<HTMLButtonElement>) {
     dispatch(clearCaddy());
@@ -89,7 +91,7 @@ export default function Cart({ callback }: Cart_props) {
                 to="/checkout"
                 className="btn btn_primary full_width flex"
                 onClick={() => {
-                  callback(false);
+                  callback.openModal();
                 }}
               >
                 checkout

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Dispatch } from "react";
+import React, { useEffect, Dispatch } from "react";
 import { MockProduct, updateQty } from "../../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
 import S from "./Update_cart.module.scss";
@@ -66,9 +66,6 @@ export default function Update_cart({
     const oldItems = JSON.parse(localStorage.getItem("caddy") || "[]")
       ? JSON.parse(localStorage.getItem("caddy") || "[]")
       : [];
-
-    console.log("yolo", products);
-
     const newItems: MockProduct[] = { ...oldItems, ...products };
 
     localStorage.setItem("caddy", JSON.stringify(newItems));
