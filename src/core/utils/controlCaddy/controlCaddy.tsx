@@ -1,10 +1,14 @@
 import { MockProduct } from "../../redux/slice/caddySlice";
-export function controlCaddy(currentCaddy: any): {
+export function controlCaddy(
+  currentCaddy: any,
+  addPrice: number = 0
+): {
   error: boolean;
   message: string;
 } {
   console.log("when push button and error has been detected", currentCaddy);
 
+  const paiementMax = 50000;
   const totalByArticle = [];
 
   for (const key in currentCaddy.caddy) {
@@ -14,13 +18,15 @@ export function controlCaddy(currentCaddy: any): {
     }
   }
 
-  const totalCaddy = totalByArticle.reduce((prev, curr) => prev + curr, 0);
+  const totalCaddy =
+    totalByArticle.reduce((prev, curr) => prev + curr, 0) + addPrice;
 
-  if (totalCaddy > 50000) {
+  if (totalCaddy > paiementMax) {
     return {
       error: true,
-      message:
-        "Votre panier exède la limite autorisé de 50 000 dollars de commande",
+      message: `Votre panier exède la limite autorisé de 50 000 dollars de commande qui est actuellment de ${
+        totalCaddy - addPrice
+      } $`,
     };
   } else {
     return {

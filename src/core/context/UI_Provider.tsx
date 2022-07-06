@@ -59,30 +59,6 @@ export default function UI_provider({ children }: UI_Provider_props) {
     },
   };
 
-  //   function openModal(target) {
-  //     for (const key in modal) {
-  //       if (Object.hasOwnProperty.call(modal, key)) {
-  //         if (key !== target) {
-  //           setModal((s) => ({ ...s, [key]: false }));
-  //           hiddenScrollBar();
-  //         }
-  //       }
-  //     }
-
-  //     setModal((s) => ({ ...s, [target]: true }));
-  //   }
-
-  //   function closeModal() {
-  //     setModal(() => {
-  //       for (const key in modal) {
-  //         if (Object.hasOwnProperty.call(modal, key)) {
-  //           setModal((s) => ({ ...s, [key]: false }));
-  //           restoreScrollBar();
-  //         }
-  //       }
-  //     });
-  //   }
-
   return (
     <UI_context.Provider value={{ UI, callback }}>
       {children}

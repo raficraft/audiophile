@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useContext } from "react";
 import { addProduct, MockProduct } from "../../../redux/slice/caddySlice";
 import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
@@ -18,12 +17,8 @@ export default function Add_product({
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
-
   const { UI, callback } = useContext(UI_context) as UI_context_type;
-  const [showNotification, setShowNotification] = useState({
-    state: false,
-    message: "",
-  });
+
   function addTocart() {
     console.log(window.localStorage);
     if (inputRef && inputRef.current) {
@@ -34,7 +29,7 @@ export default function Add_product({
       inputRef.current.value = "1";
     }
 
-    const isValidCaddy = controlCaddy(products);
+    const isValidCaddy = controlCaddy(products, price);
 
     if (isValidCaddy.error) {
       pushNotification(isValidCaddy.message);
@@ -67,9 +62,6 @@ export default function Add_product({
       const maxQty = inputRef.current.getAttribute("max")!;
       if (Number(inputRef.current.value) >= 1) {
         const addOneItem = String(parseInt(inputRef.current.value) + 1);
-
-        console.log(Number(maxQty));
-        console.log(Number(addOneItem));
 
         if (Number(addOneItem) <= Number(maxQty)) {
           inputRef.current.value = addOneItem;
@@ -140,7 +132,6 @@ export default function Add_product({
           Add to cart
         </button>
       </div>
-      {UI.notification.show && <Notification text={UI.notification.message} />}
     </>
   );
 }
