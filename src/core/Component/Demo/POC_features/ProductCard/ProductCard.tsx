@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { addProduct, MockProduct } from "../../../../redux/slice/caddySlice";
+import Btn from "../../../button/Btn/Btn";
 import { useAppDispatch, useAppSelector } from "../../../hooks/toolkit";
 import S from "./Product.module.scss";
 
@@ -71,7 +72,6 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
       : [];
 
     const newItems: MockProduct[] = { ...oldItems, ...products };
-
     localStorage.setItem("caddy", JSON.stringify(newItems));
   });
 
@@ -101,15 +101,14 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
           +
         </button>
       </div>
-      <button
-        className={S.buy}
-        type="button"
-        onClick={(event) => {
-          addToCart(event);
+      <Btn
+        params={{
+          mode: "link",
+          text: "See product",
+          cssName: ["btn_primary", "btn_primary__std"],
+          link: "",
         }}
-      >
-        Ajouter au panier
-      </button>
+      />
     </div>
   );
 }

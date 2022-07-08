@@ -179,30 +179,6 @@ label {
   line-height: 18px;
 }
 
-.btn_primary {
-  padding: 15px 0px;
-  @include responsiveContainer(100%);
-  color: white;
-  background-color: var(--background-orange);
-  transition: 0.5s;
-
-  &:hover {
-    background-color: var(--background-orange-light);
-    transition: 0.5s;
-  }
-}
-.btn_secondary {
-  padding: 14px 30px;
-  color: var(--text-dark);
-  transition: 0.5s;
-  border: 1px solid black;
-
-  &:hover {
-    background-color: black;
-    color: var(--text-light);
-    transition: 0.5s;
-  }
-}
 .btn_arrow {
   position: relative;
   padding: 0 14px 0 0;
@@ -363,11 +339,9 @@ label {
 }
 
 #root {
-  width: 100%;
   min-height: 100%;
+  width: 100%;
   height: 100%;
-  @include flex(column, flex-start, flex-start, nowrap);
-  align-self: stretch;
 }
 
 #demo {
@@ -504,6 +478,11 @@ label {
   .size_mobile,
   .container_responsive_img--mobile {
     display: block;
+  }
+
+  #cart_wrapper {
+    padding: 0 1.5rem;
+    @include flexCenter();
   }
 }
 @media screen and (min-width: 601px) and (max-width: 960px) {

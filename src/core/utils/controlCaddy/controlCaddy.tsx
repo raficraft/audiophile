@@ -24,9 +24,7 @@ export function controlCaddy(
   if (totalCaddy > paiementMax) {
     return {
       error: true,
-      message: `Votre panier exède la limite autorisé de 50 000 dollars de commande qui est actuellment de ${
-        totalCaddy - addPrice
-      } $`,
+      message: `You cannot place an order over $50,000`,
     };
   } else {
     return {

@@ -33,14 +33,16 @@ export default function Update_cart({
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       if (Number(inputRef.current.value) >= 1) {
-        const addOneToCurrentValue = String(
+        const removeOneToCurrentValue = String(
           parseInt(inputRef.current.value) - 1
         );
-        const qtyUpdate = parseInt(inputRef.current.value);
-        inputRef.current.value = addOneToCurrentValue;
+        const qtyUpdate = parseInt(inputRef.current.value) - 1;
+        inputRef.current.value = removeOneToCurrentValue;
+        console.log(qtyUpdate);
         if (qtyUpdate > 0) {
           dispatch(updateQty({ id, qty: qtyUpdate }));
         } else {
+          console.log("WTF");
           setter(true);
           inputRef.current.value = "1";
         }
@@ -51,7 +53,7 @@ export default function Update_cart({
   function validCaddy() {
     const isValidCaddy = controlCaddy(products, price);
     if (isValidCaddy.error) {
-      pushNotification(isValidCaddy.message);
+      callback.openNotification(isValidCaddy.message, "alert");
       return false;
     }
     return true;
@@ -73,12 +75,6 @@ export default function Update_cart({
           dispatch(updateQty({ id, qty: qtyUpdate }));
         }
       }
-    }
-  }
-
-  function pushNotification(message: string) {
-    if (!UI.notification.show) {
-      callback.openNotification(message);
     }
   }
 

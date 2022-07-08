@@ -22,7 +22,12 @@ function App() {
       </Routes>
       <Footer />
 
-      {UI.notification.show && <Notification text={UI.notification.message} />}
+      {UI.notification.show && (
+        <Notification
+          message={UI.notification.message}
+          type={UI.notification.type}
+        />
+      )}
     </>
   );
 }

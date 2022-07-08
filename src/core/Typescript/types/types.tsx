@@ -58,7 +58,8 @@ export type input_type = {
 };
 
 export type notification_type = {
-  text: string;
+  message: string;
+  type: string;
 };
 
 export type cart_list_type = {

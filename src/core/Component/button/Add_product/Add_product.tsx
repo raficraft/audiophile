@@ -32,7 +32,7 @@ export default function Add_product({
     const isValidCaddy = controlCaddy(products, price);
 
     if (isValidCaddy.error) {
-      pushNotification(isValidCaddy.message);
+      callback.openNotification(isValidCaddy.message, "alert");
       return false;
     }
 
@@ -45,6 +45,10 @@ export default function Add_product({
         qty: qty,
       })
     );
+
+    const makeMessage = ``;
+
+    callback.openNotification(isValidCaddy.message, "alert");
     addInstorage();
   }
 
@@ -66,17 +70,12 @@ export default function Add_product({
         if (Number(addOneItem) <= Number(maxQty)) {
           inputRef.current.value = addOneItem;
         } else {
-          pushNotification(
-            "vous ne pouvez commande + de 20 produits à la fois"
+          callback.openNotification(
+            "You cannot order more than 20 products",
+            "alert"
           );
         }
       }
-    }
-  }
-
-  function pushNotification(message: string) {
-    if (!UI.notification.show) {
-      callback.openNotification(message);
     }
   }
 

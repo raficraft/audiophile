@@ -15,6 +15,9 @@
 
     .img_container {
       @include size(64px, 64px);
+      @media screen and (max-width: 360px) {
+        @include size(48px);
+      }
 
       img {
         border-radius: 8px;
@@ -25,6 +28,11 @@
     }
     .cart_details {
       @include flex(column);
+      @media screen and (max-width: 360px) {
+        p {
+          font-size: 13px;
+        }
+      }
     }
 
     .input_number {

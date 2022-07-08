@@ -24,6 +24,7 @@ import image_best_gear_mobil from "../../assets/shared/mobile/image-best-gear.jp
 
 import useLoadImage from "../hooks/useLoadImage";
 import Sticker_product from "../Component/Sticker_product/Sticker_product";
+import Btn from "../Component/button/Btn/Btn";
 
 export default function Sticker_home() {
   const best_gear_images_array = [
@@ -111,9 +112,14 @@ export default function Sticker_home() {
         }
         multiSrc={speakers_zx9_images_array}
         button={
-          <button type="button" className="btn btn_secondary">
-            see product
-          </button>
+          <Btn
+            params={{
+              mode: "link",
+              text: "See product",
+              cssName: ["btn_primary", "btn_primary__snd"],
+              link: "/product/xx99-mark-two-headphones",
+            }}
+          />
         }
       ></Sticker_product>
       <Sticker_product
@@ -121,9 +127,14 @@ export default function Sticker_home() {
         title={<h3>zx7 speaker</h3>}
         multiSrc={speakers_images_array}
         button={
-          <button type="button" className="btn btn_secondary">
-            see product
-          </button>
+          <Btn
+            params={{
+              mode: "link",
+              text: "See product",
+              cssName: ["btn_primary", "btn_primary__std"],
+              link: "/product/xx99-mark-two-headphones",
+            }}
+          />
         }
       ></Sticker_product>
       <Sticker_product
@@ -131,9 +142,14 @@ export default function Sticker_home() {
         title={<h3>yx1 earphones</h3>}
         multiSrc={earphones_images_array}
         button={
-          <button type="button" className="btn btn_secondary">
-            see product
-          </button>
+          <Btn
+            params={{
+              mode: "link",
+              text: "See product",
+              cssName: ["btn_primary", "btn_primary__std"],
+              link: "/product/xx99-mark-two-headphones",
+            }}
+          />
         }
       ></Sticker_product>
 

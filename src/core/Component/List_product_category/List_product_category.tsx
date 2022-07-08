@@ -5,6 +5,7 @@ import {
   createImgInfo,
   extractConsumedData,
 } from "../../utils/manageJson/manageJson";
+import Btn from "../button/Btn/Btn";
 import Sticker_product from "../Sticker_product/Sticker_product";
 import S from "./List_product_category.module.scss";
 //Best Gear Image all format
@@ -62,9 +63,14 @@ export default function List_product_category({ data }: any) {
             text={<p className="text text_dark__smooth">{text}</p>}
             multiSrc={multiSrc}
             button={
-              <NavLink to={`/product/${slug}`} className="btn btn_primary">
-                see product
-              </NavLink>
+              <Btn
+                params={{
+                  mode: "link",
+                  text: "See product",
+                  cssName: ["btn_primary", "btn_primary__std"],
+                  link: `/product/${slug}`,
+                }}
+              />
             }
           ></Sticker_product>
         );

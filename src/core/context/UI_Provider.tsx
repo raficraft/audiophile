@@ -6,10 +6,13 @@ type UI_Provider_props = {
 };
 
 export type UI_context_type = {
-  UI: { modal: boolean; notification: { show: boolean; message: string } };
+  UI: {
+    modal: boolean;
+    notification: { show: boolean; message: string; type: string };
+  };
   callback: {
     openModal: () => void;
-    openNotification: (message: string) => void;
+    openNotification: (message: string, type: string) => void;
     closeNotification: () => void;
   };
   setUI?: Dispatch<boolean>;
@@ -25,6 +28,7 @@ export default function UI_provider({ children }: UI_Provider_props) {
     notification: {
       show: false,
       message: "",
+      type: "alert",
     },
   });
 
@@ -47,15 +51,25 @@ export default function UI_provider({ children }: UI_Provider_props) {
       setUI((S) => ({ ...S, modal: !UI.modal }));
     },
 
-    openNotification: (message: string) => {
-      setUI((S) => ({ ...S, notification: { show: true, message: message } }));
+    openNotification: (message: string, type: string) => {
+      if (UI.notification.show) {
+        callback.closeNotification();
+      }
+
+      setUI((S) => ({
+        ...S,
+        notification: { show: true, message: message, type },
+      }));
       setTimeout(() => {
         callback.closeNotification();
       }, 5000);
     },
 
     closeNotification: () => {
-      setUI((S) => ({ ...S, notification: { show: false, message: "" } }));
+      setUI((S) => ({
+        ...S,
+        notification: { show: false, message: "", type: "" },
+      }));
     },
   };
 

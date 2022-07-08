@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { CaddyIcons, Logo } from "../../assets/SVG/Icons/Icons";
 import Cart from "../Cart/Cart";
@@ -7,10 +7,11 @@ import Burger_Menu from "./../Burger_menu/Burger_menu";
 import S from "./Header.module.scss";
 import Modal from "../Modal/Modal";
 import { UI_context, UI_context_type } from "../../context/UI_Provider";
+import { useAppSelector } from "../hooks/toolkit";
 
 export default function Header() {
-  const [showCart, setShowCart] = useState(false);
   const { UI, callback } = useContext(UI_context) as UI_context_type;
+
   return (
     <>
       <section

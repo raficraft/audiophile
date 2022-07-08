@@ -5,9 +5,14 @@
   right: 0;
   background-color: white;
   margin: 2rem 0;
-  padding: 2rem;
+  padding: 2rem 1.75rem;
   border-radius: 8px;
-  min-width: 377px;
+  max-width: 377px;
+  width: 100%;
+
+  @media screen and (max-width: "600px") {
+    position: static;
+  }
 
   .header_top {
     @include flex(row, space-between, center);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { img_JSON_import } from "../../../Typescript/types/types";
 import { createImgInfo } from "../../../utils/manageJson/manageJson";
+import Btn from "../../button/Btn/Btn";
 import S from "./Other_product.module.scss";
 
 export default function Other_product({ data }: any) {
@@ -52,14 +53,16 @@ export default function Other_product({ data }: any) {
         <div key={key} className={S.item}>
           {!loading && makeImg(key)}
           <h5>{product.name}</h5>
-
-          <NavLink to={`/product/${product.slug}`}>
-            <a className="btn btn_primary">see product</a>
-          </NavLink>
+          <Btn
+            params={{
+              mode: "link",
+              text: "See product",
+              cssName: ["btn_primary", "btn_primary__std"],
+              link: `/product/${product.slug}`,
+            }}
+          />
         </div>
       );
-
-      return [];
     });
   }
 
