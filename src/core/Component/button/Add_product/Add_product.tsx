@@ -6,6 +6,7 @@ import Notification from "../../Notification/Notification";
 import S from "./Add_product.module.scss";
 
 import { UI_context, UI_context_type } from "../../../context/UI_Provider";
+import Btn from "../Btn/Btn";
 
 export default function Add_product({
   id,
@@ -19,7 +20,7 @@ export default function Add_product({
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const { UI, callback } = useContext(UI_context) as UI_context_type;
 
-  function addTocart() {
+  function addToCart() {
     console.log(window.localStorage);
     if (inputRef && inputRef.current) {
       qty = Number(inputRef.current.value);
@@ -46,9 +47,10 @@ export default function Add_product({
       })
     );
 
-    const makeMessage = ``;
-
-    callback.openNotification(isValidCaddy.message, "alert");
+    callback.openNotification(
+      `Your product has been added to the basket`,
+      "info"
+    );
     addInstorage();
   }
 
@@ -92,6 +94,7 @@ export default function Add_product({
   useEffect(() => {
     addInstorage();
   }, [products]);
+
   return (
     <>
       <div className={`flex gap_16`}>
@@ -121,15 +124,16 @@ export default function Add_product({
           </button>
         </div>
 
-        <button
-          type="button"
-          className="btn btn_primary"
-          onClick={() => {
-            addTocart();
+        <Btn
+          params={{
+            mode: "btn",
+            text: "add to cart",
+            cssName: ["btn_primary", "btn_primary__full"],
           }}
-        >
-          Add to cart
-        </button>
+          callback={() => {
+            addToCart();
+          }}
+        />
       </div>
     </>
   );

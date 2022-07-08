@@ -116,7 +116,7 @@ export default function Sticker_home() {
             params={{
               mode: "link",
               text: "See product",
-              cssName: ["btn_primary", "btn_primary__snd"],
+              cssName: ["btn_black"],
               link: "/product/xx99-mark-two-headphones",
             }}
           />
@@ -131,7 +131,7 @@ export default function Sticker_home() {
             params={{
               mode: "link",
               text: "See product",
-              cssName: ["btn_primary", "btn_primary__std"],
+              cssName: ["btn_snd"],
               link: "/product/xx99-mark-two-headphones",
             }}
           />
@@ -146,7 +146,7 @@ export default function Sticker_home() {
             params={{
               mode: "link",
               text: "See product",
-              cssName: ["btn_primary", "btn_primary__std"],
+              cssName: ["btn_snd"],
               link: "/product/xx99-mark-two-headphones",
             }}
           />

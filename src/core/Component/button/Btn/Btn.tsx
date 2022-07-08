@@ -38,6 +38,7 @@ export default function Btn({ params, callback }: Btn_props) {
     case "btn":
       return (
         <button
+          type="button"
           className={`btn ${makeCss()}`}
           onClick={() => {
             callback && callback();

@@ -2,7 +2,7 @@
 
 .notification {
   position: fixed;
-  padding: 2rem;
+  padding: 1rem 2rem;
   bottom: 0;
   right: 0;
   z-index: 2000;
@@ -12,9 +12,9 @@
 }
 
 .notif_alert {
-  background-color: red;
+  background-color: var(--red);
 }
 
 .notif_info {
-  background-color: rgb(236, 178, 16);
+  background-color: var(--background-orange);
 }

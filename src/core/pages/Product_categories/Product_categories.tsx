@@ -53,7 +53,7 @@ export default function Product_categories() {
           <h1 className="text_white">{category}</h1>
         </div>
       </section>
-      <section id="portal_target" className="wrapper_layout  categories_inside">
+      <section id="portal_target" className="wrapper_layout">
         <div id="categories_inside" className="wrapper_inside">
           {fetchData.loading === true ? (
             <GradientLoader></GradientLoader>

@@ -47,7 +47,7 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
     }
   }
 
-  function addToCart(event: React.MouseEvent<HTMLButtonElement>) {
+  function addToCart() {
     if (inputRef && inputRef.current) {
       qty = Number(inputRef.current.value);
     }
@@ -101,12 +101,15 @@ export default function Products({ id, name, price, qty, img }: MockProduct) {
           +
         </button>
       </div>
+
       <Btn
         params={{
-          mode: "link",
+          mode: "btn",
           text: "See product",
-          cssName: ["btn_primary", "btn_primary__std"],
-          link: "",
+          cssName: ["btn_primary", "btn_primary__full"],
+        }}
+        callback={() => {
+          addToCart();
         }}
       />
     </div>
