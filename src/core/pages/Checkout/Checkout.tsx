@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import Cart from "../../Component/Cart/Cart";
+import { validity_input } from "../../Component/Input/validity_input";
 import S from "./Checkout.module.scss";
 import Checkout_form from "./Checkout_Form/Checkout_form";
 
@@ -6,9 +8,37 @@ export default function Checkout() {
   const formRef = React.createRef<any>();
 
   function handleSubmit() {
-    // console.log("in page ", formRef);
-    // console.log(formRef.current.collection.name.current.input.value);
-    // console.log("in page ", formRef.current);
+    const formItem = formRef.current.collection;
+    console.log("collection", formItem);
+    const keys = Object.keys(formItem);
+    let countError = keys.length;
+    console.log(countError);
+
+    for (const iterator of keys) {
+      const inputEl = formItem[iterator].current.input;
+      const error = formItem[iterator].current.error;
+
+      error.textContent = validity_input(inputEl);
+      countError = error.textContent === "" ? countError - 1 : countError;
+    }
+
+    console.log("yolo", countError);
+
+    // let checkError = true;
+
+    // for (const iterator of keys) {
+    //   const element = formItem[iterator].current;
+    //   let checkError = false;
+    //   if (element.error) {
+    //     if (element.error.textContent) {
+    //       checkError = true;
+    //     }
+    //   }
+    // }
+
+    // if (checkError) {
+    //   console.log("payement");
+    // }
   }
 
   useEffect(() => {}, []);
@@ -18,15 +48,12 @@ export default function Checkout() {
         <div className={S.checkout}>
           <Checkout_form ref={formRef} />
           <aside>
-            <h6>SUMMARY</h6>
-            <button
-              type="button"
-              onClick={() => {
+            <Cart
+              itemsType="summary"
+              submit={() => {
                 handleSubmit();
               }}
-            >
-              SEND
-            </button>
+            />
           </aside>
         </div>
       </div>

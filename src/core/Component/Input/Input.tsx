@@ -1,18 +1,33 @@
-import React, { forwardRef, useRef, useImperativeHandle } from "react";
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { input_type } from "../../Typescript/types/types";
 import { validity_input } from "./validity_input";
 
 const Input = React.forwardRef(
   (
-    { type, name, label, placeholder, pattern, cssName = "" }: input_type,
+    {
+      type,
+      name,
+      label,
+      placeholder,
+      pattern,
+      cssName = "",
+      groupName = "",
+      checked = false,
+    }: input_type,
     ref
   ) => {
     const inputRef = React.createRef<HTMLInputElement>()!;
     const errorMessage = React.createRef<HTMLParagraphElement>()!;
+    const [isChecked, setIsChecked] = useState(checked);
 
     function controlCapture() {
       if (errorMessage.current && inputRef.current) {
-        const error = validity_input(inputRef);
+        const error = validity_input(inputRef.current);
         errorMessage.current.textContent = error;
       }
     }
@@ -26,8 +41,15 @@ const Input = React.forwardRef(
       },
     }));
 
+    function handleRadio(event: React.MouseEvent<HTMLLabelElement>) {
+      console.log("yolo");
+      setIsChecked(!isChecked);
+    }
+
     switch (type) {
-      case "text" || "email" || "password":
+      case "text":
+      case "email":
+      case "password":
         return (
           <div className={`bloc_input ${cssName}`}>
             <div className="bloc_input__head">
@@ -54,11 +76,20 @@ const Input = React.forwardRef(
       case "radio":
         return (
           <div className={`bloc_input__radio ${cssName}`}>
-            <label htmlFor="money" className="fakeContainer">
+            <span className="error_message_container">
+              <p className="text_error" ref={errorMessage}></p>
+            </span>
+            <label
+              htmlFor={name}
+              className="fakeContainer"
+              onClick={(event) => {
+                handleRadio(event);
+              }}
+            >
               {label}
-              <label className="fakeBox" data-ischecked="false"></label>
+              <label className="fakeBox" data-ischecked={isChecked}></label>
             </label>
-            <input type="radio" id={name} name={name} />
+            <input type="radio" id={name} name={groupName} ref={inputRef} />
           </div>
         );
 

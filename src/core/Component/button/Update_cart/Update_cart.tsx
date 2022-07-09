@@ -1,5 +1,9 @@
 import React, { useEffect, Dispatch, useContext } from "react";
-import { MockProduct, updateQty } from "../../../redux/slice/caddySlice";
+import {
+  addProduct,
+  MockProduct,
+  updateQty,
+} from "../../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
 import S from "./Update_cart.module.scss";
 
@@ -30,6 +34,30 @@ export default function Update_cart({
 
   const { UI, callback } = useContext(UI_context) as UI_context_type;
 
+  function addToCart() {
+    console.log(window.localStorage);
+    if (inputRef && inputRef.current) {
+      qty = Number(inputRef.current.value);
+    }
+
+    const isValidCaddy = controlCaddy(products, price);
+
+    console.log(isValidCaddy);
+
+    if (isValidCaddy.error) {
+      callback.openNotification(isValidCaddy.message, "alert");
+      return false;
+    }
+
+    dispatch(updateQty({ id, qty: qty }));
+
+    callback.openNotification(
+      `Your product has been added to the basket`,
+      "info"
+    );
+    addInstorage();
+  }
+
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       if (Number(inputRef.current.value) >= 1) {
@@ -42,7 +70,6 @@ export default function Update_cart({
         if (qtyUpdate > 0) {
           dispatch(updateQty({ id, qty: qtyUpdate }));
         } else {
-          console.log("WTF");
           setter(true);
           inputRef.current.value = "1";
         }
@@ -78,13 +105,23 @@ export default function Update_cart({
     }
   }
 
-  function addInstorage() {
-    const oldItems = JSON.parse(localStorage.getItem("caddy") || "[]")
+  function getCaddyInStorage() {
+    return JSON.parse(localStorage.getItem("caddy") || "[]")
       ? JSON.parse(localStorage.getItem("caddy") || "[]")
       : [];
-    const newItems: MockProduct[] = { ...oldItems, ...products };
+  }
 
+  function addInstorage() {
+    const oldItems = getCaddyInStorage();
+    const newItems: MockProduct[] = { ...oldItems, ...products };
     localStorage.setItem("caddy", JSON.stringify(newItems));
+  }
+
+  function handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    console.log(event);
+    if (event.code === "Enter") {
+      addToCart();
+    }
   }
 
   useEffect(() => {
@@ -109,6 +146,9 @@ export default function Update_cart({
             ref={inputRef}
             min="1"
             max="20"
+            onKeyUp={(event) => {
+              handleKeyUp(event);
+            }}
           />
           <button
             type="button"

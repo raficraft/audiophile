@@ -12,6 +12,24 @@ import { useAppSelector } from "../hooks/toolkit";
 export default function Header() {
   const { UI, callback } = useContext(UI_context) as UI_context_type;
 
+  useEffect(() => {
+    document.addEventListener("keyup", (event) => {
+      console.log(event.code);
+      if (event.code === "Escap") {
+        callback.openModal();
+      }
+    });
+
+    // return () => {
+    //   document.removeEventListener("keyup", (event) => {
+    //     console.log(event.code);
+    //     if (event.code === "Escap") {
+    //       callback.openModal();
+    //     }
+    //   });
+    // };
+  }, []);
+
   return (
     <>
       <section
@@ -41,7 +59,7 @@ export default function Header() {
       </section>
       {UI.modal && (
         <Modal>
-          <Cart></Cart>
+          <Cart itemsType="cart" />
         </Modal>
       )}
     </>

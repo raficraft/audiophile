@@ -13,6 +13,7 @@ export default function Cart_List({
   name,
   price,
   qty,
+  itemsType,
 }: cart_list_type) {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const dispatch = useAppDispatch();
@@ -58,9 +59,14 @@ export default function Cart_List({
               <p className="text_dark__smooth bold">${price}</p>
             </div>
           </header>
-          <Update_cart {...props} />
+
+          {
+            //find an idea to use as a child
+            itemsType === "cart" && <Update_cart {...props} />
+          }
+          {itemsType !== "cart" && <p>{`X ${qty}`}</p>}
         </div>
-        {isDelete && (
+        {isDelete && itemsType === "itemsType" && (
           <div className={S.action_callback}>
             <p>Delete this product ?</p>
             <span>

@@ -14,7 +14,7 @@ type Btn_props = {
 
 /**
  *
- * @param params.mode
+ * @param params.mode btn || link_and_callback || link
  * @param params.text
  * @param params.cssName?
  * @param params.link?

@@ -54,6 +54,8 @@ export type input_type = {
   format?: string;
   pattern?: string;
   cssName?: string;
+  groupName?: string;
+  checked?: boolean;
   callback?: () => void;
 };
 
@@ -68,4 +70,10 @@ export type cart_list_type = {
   name: string;
   price: number;
   qty: number;
+  itemsType: string;
+};
+
+export type Cart_props = {
+  itemsType: string;
+  submit?: () => void;
 };

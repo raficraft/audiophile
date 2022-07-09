@@ -49,13 +49,15 @@ const Checkout_form = forwardRef((props, ref) => {
           />
 
           <Input
-            type="email"
+            type="text"
             name="email"
             label="Email Adress"
             placeholder="Insert Your Email"
             cssName="bloc_input__basic"
             ref={inputRef.email}
+            pattern="^[A-Za-z]+$"
           />
+
           <Input
             type="text"
             name="phone"
@@ -63,6 +65,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert your phone number"
             cssName="bloc_input__basic"
             ref={inputRef.phone}
+            pattern="^[A-Za-z]+$"
           />
         </div>
       </fieldset>
@@ -77,6 +80,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert Your adress"
             ref={inputRef.adress}
             cssName="bloc_input__full"
+            pattern="^[A-Za-z]+$"
           />
 
           <Input
@@ -86,6 +90,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert Your Zip code"
             ref={inputRef.zip}
             cssName="bloc_input__basic"
+            pattern="^[A-Za-z]+$"
           />
           <Input
             type="text"
@@ -94,6 +99,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert your city"
             ref={inputRef.city}
             cssName="bloc_input__basic"
+            pattern="^[A-Za-z]+$"
           />
 
           <Input
@@ -103,6 +109,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert your country"
             ref={inputRef.country}
             cssName="bloc_input__basic"
+            pattern="^[A-Za-z]+$"
           />
         </div>
       </fieldset>
@@ -113,17 +120,22 @@ const Checkout_form = forwardRef((props, ref) => {
         <div className={S.input_container}>
           <Input
             type="radio"
-            name="city"
+            name="emoney"
+            groupName="paiement"
             label="e-Money"
             ref={inputRef.money_radio}
             cssName="bloc_input__full"
+            pattern="^[A-Za-z]+$"
+            checked={true}
           />
           <Input
             type="radio"
-            name="city"
+            name="cash"
+            groupName="paiement"
             label="Cash on Delivery"
             cssName="bloc_input__full"
             ref={inputRef.cash_radio}
+            pattern="^[A-Za-z]+$"
           />
           <Input
             type="text"
@@ -132,6 +144,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert your e-money Number"
             cssName="bloc_input__basic"
             ref={inputRef.money_number}
+            pattern="^[A-Za-z]+$"
           />
           <Input
             type="text"
@@ -140,6 +153,7 @@ const Checkout_form = forwardRef((props, ref) => {
             placeholder="Insert you e-money PIN"
             cssName="bloc_input__basic"
             ref={inputRef.pin}
+            pattern="^[A-Za-z]+$"
           />
         </div>
       </fieldset>

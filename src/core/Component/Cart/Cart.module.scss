@@ -4,7 +4,6 @@
   position: absolute;
   right: 0;
   background-color: white;
-  margin: 2rem 0;
   padding: 2rem 1.75rem;
   border-radius: 8px;
   max-width: 377px;
@@ -37,8 +36,29 @@
     @include responsiveContainer(100%);
   }
 
-  .total_price {
+  .bill_calc {
+    margin: 2rem 0 0 0;
+    gap: 8px;
+    @include flex(column);
+  }
+
+  .total_and_pay {
+    @include flex(column);
+    width: 100%;
+    margin: 1.5rem 0 0 0;
+    gap: 2rem;
+  }
+  .bill_item {
     @include flex(row, space-between);
-    margin: 2rem 0 1.5rem;
+    width: 100%;
+    p:first-child {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 25px;
+      color: var(--text-dark);
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
   }
 }

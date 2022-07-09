@@ -9,6 +9,7 @@ export type UI_context_type = {
   UI: {
     modal: boolean;
     notification: { show: boolean; message: string; type: string };
+    shop: { vat: number; ship: number };
   };
   callback: {
     openModal: () => void;
@@ -29,6 +30,10 @@ export default function UI_provider({ children }: UI_Provider_props) {
       show: false,
       message: "",
       type: "alert",
+    },
+    shop: {
+      vat: 20,
+      ship: 50,
     },
   });
 

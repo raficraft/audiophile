@@ -81,14 +81,22 @@ export default function Add_product({
     }
   }
 
-  function addInstorage() {
-    const oldItems = JSON.parse(localStorage.getItem("caddy") || "[]")
+  function getCaddyInStorage() {
+    return JSON.parse(localStorage.getItem("caddy") || "[]")
       ? JSON.parse(localStorage.getItem("caddy") || "[]")
       : [];
+  }
 
+  function addInstorage() {
+    const oldItems = getCaddyInStorage();
     const newItems: MockProduct[] = { ...oldItems, ...products };
-
     localStorage.setItem("caddy", JSON.stringify(newItems));
+  }
+
+  function handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.code === "Enter") {
+      addToCart();
+    }
   }
 
   useEffect(() => {
@@ -113,6 +121,9 @@ export default function Add_product({
             ref={inputRef}
             min="1"
             max="20"
+            onKeyUp={(event) => {
+              handleKeyUp(event);
+            }}
           />
           <button
             type="button"

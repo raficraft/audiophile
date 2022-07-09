@@ -10,7 +10,7 @@ import { UI_context, UI_context_type } from "./core/context/UI_Provider";
 import Notification from "./core/Component/Notification/Notification";
 
 function App() {
-  const { UI, callback } = useContext(UI_context) as UI_context_type;
+  const { UI } = useContext(UI_context) as UI_context_type;
   return (
     <>
       <Header />
