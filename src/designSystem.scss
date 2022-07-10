@@ -313,7 +313,8 @@ label {
   }
 
   input[type="radio"] {
-    display: none;
+    @include size(0px);
+    opacity: 0;
   }
 
   .fakeBox {

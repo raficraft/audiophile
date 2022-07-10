@@ -42,8 +42,19 @@ const Input = React.forwardRef(
     }));
 
     function handleRadio(event: React.MouseEvent<HTMLLabelElement>) {
-      console.log("yolo");
-      setIsChecked(!isChecked);
+      const groupName = inputRef.current?.getAttribute("name");
+
+      const fakeBoxCollection: NodeListOf<HTMLLabelElement> =
+        document.querySelectorAll(".fakeBox");
+      const target: any = event.target;
+
+      fakeBoxCollection.forEach((el: HTMLLabelElement) => {
+        if (el.getAttribute("for") === target.getAttribute("for")) {
+          el.dataset.ischecked = "true";
+        } else {
+          el.dataset.ischecked = "false";
+        }
+      });
     }
 
     switch (type) {
@@ -87,9 +98,20 @@ const Input = React.forwardRef(
               }}
             >
               {label}
-              <label className="fakeBox" data-ischecked={isChecked}></label>
+              <label
+                htmlFor={name}
+                className="fakeBox"
+                data-group={groupName}
+                data-ischecked={isChecked}
+              ></label>
             </label>
-            <input type="radio" id={name} name={groupName} ref={inputRef} />
+            <input
+              type="radio"
+              id={name}
+              name={groupName}
+              ref={inputRef}
+              checked={isChecked === true}
+            />
           </div>
         );
 

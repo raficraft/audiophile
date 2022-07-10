@@ -9,10 +9,8 @@ export default function Checkout() {
 
   function handleSubmit() {
     const formItem = formRef.current.collection;
-    console.log("collection", formItem);
     const keys = Object.keys(formItem);
     let countError = keys.length;
-    console.log(countError);
 
     for (const iterator of keys) {
       const inputEl = formItem[iterator].current.input;
@@ -22,23 +20,9 @@ export default function Checkout() {
       countError = error.textContent === "" ? countError - 1 : countError;
     }
 
-    console.log("yolo", countError);
-
-    // let checkError = true;
-
-    // for (const iterator of keys) {
-    //   const element = formItem[iterator].current;
-    //   let checkError = false;
-    //   if (element.error) {
-    //     if (element.error.textContent) {
-    //       checkError = true;
-    //     }
-    //   }
-    // }
-
-    // if (checkError) {
-    //   console.log("payement");
-    // }
+    if (countError === 0) {
+      console.log("paiment en cours");
+    }
   }
 
   useEffect(() => {}, []);

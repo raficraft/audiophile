@@ -1,5 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle } from "react";
 import Input from "../../../Component/Input/Input";
+import Input_radio from "../../../Component/Input/Input_radio/Input_radio";
 import S from "./Checkout_form.module.scss";
 
 const Checkout_form = forwardRef((props, ref) => {
@@ -15,6 +16,7 @@ const Checkout_form = forwardRef((props, ref) => {
 
     money_radio: useRef(),
     cash_radio: useRef(),
+
     money_number: useRef(),
     pin: useRef(),
   };
@@ -118,6 +120,7 @@ const Checkout_form = forwardRef((props, ref) => {
         <legend className="text_subtitle">payment details</legend>
 
         <div className={S.input_container}>
+          {/* <Input_radio ref={inputRef.radio} /> */}
           <Input
             type="radio"
             name="emoney"
