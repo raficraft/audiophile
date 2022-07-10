@@ -2,20 +2,36 @@
 
 .summary {
   background-color: white;
-  padding: 2rem 1.75rem;
+  padding: 2rem;
   border-radius: 8px;
-  max-width: 377px;
+  @include responsiveContainer(100%);
   width: 100%;
+
+  @media screen and (max-width: 600px) {
+    padding: 2rem 1.5rem;
+  }
 }
 
 .cart {
   position: absolute;
   right: 0;
+  top: 0;
   background-color: white;
   padding: 2rem 1.75rem;
   border-radius: 8px;
-  max-width: 377px;
-  width: 100%;
+  @include responsiveContainer(377px);
+
+  @media screen and (max-width: 600px) {
+    @include responsiveContainer(calc(100% - 3rem));
+    margin: auto;
+    left: 0;
+  }
+
+  footer {
+    a {
+      margin: 1.5rem 0 0 0;
+    }
+  }
 }
 
 .header_top {

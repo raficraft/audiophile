@@ -103,7 +103,9 @@ export default function Cart({ itemsType, submit }: Cart_props) {
               <p className="bold">${UI.shop.ship}</p>
             </span>
             <span className={S.bill_item}>
-              <p>VAT included</p>
+              <p>
+                VAT {"("}INCLUDED{")"}
+              </p>
               <p className="bold">${bill.totalVat}</p>
             </span>
             <footer className={S.total_and_pay}>

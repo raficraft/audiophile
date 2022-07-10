@@ -27,7 +27,7 @@ export default function Modal({ children }: Modal_props) {
   return createPortal(
     <div
       className={S.modal}
-      style={{ top: topPosition }}
+      style={{ top: topPosition, height: `calc(100% - ${topPosition})` }}
       onClick={() => {
         callback.openModal();
       }}
