@@ -13,11 +13,18 @@ export default function Checkout() {
     let countError = keys.length;
 
     for (const iterator of keys) {
-      const inputEl = formItem[iterator].current.input;
-      const error = formItem[iterator].current.error;
+      // console.log(iterator);
+      // console.log(formItem[iterator].current);
+      if (formItem[iterator].current !== null) {
+        console.log("!!!!");
+        const inputEl = formItem[iterator].current.input;
+        const error = formItem[iterator].current.error;
 
-      error.textContent = validity_input(inputEl);
-      countError = error.textContent === "" ? countError - 1 : countError;
+        error.textContent = validity_input(inputEl);
+        countError = error.textContent === "" ? countError - 1 : countError;
+      } else {
+        countError = countError - 1;
+      }
     }
 
     if (countError === 0) {

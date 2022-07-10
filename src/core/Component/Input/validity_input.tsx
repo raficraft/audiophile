@@ -6,8 +6,6 @@ export const validity_input = (input: any) => {
       return "";
 
     default:
-      console.log("yolo");
-
       const value = input.value;
       const pattern = input.getAttribute("pattern");
       const regex = new RegExp(pattern);
@@ -17,13 +15,11 @@ export const validity_input = (input: any) => {
       }
 
       if (!regex.test(value)) {
-        const error: string = "wrong format";
-        return error;
+        return "wrong format";
       }
 
       if (input.value.length < 3) {
-        const error: string = "at least 3 characters";
-        return error;
+        return "at least 3 characters";
       }
 
       break;

@@ -3,6 +3,7 @@ import React, {
   useRef,
   useImperativeHandle,
   useState,
+  useEffect,
 } from "react";
 import { input_type } from "../../Typescript/types/types";
 import { validity_input } from "./validity_input";
@@ -18,6 +19,7 @@ const Input = React.forwardRef(
       cssName = "",
       groupName = "",
       checked = false,
+      callback,
     }: input_type,
     ref
   ) => {
@@ -42,11 +44,12 @@ const Input = React.forwardRef(
     }));
 
     function handleRadio(event: React.MouseEvent<HTMLLabelElement>) {
-      const groupName = inputRef.current?.getAttribute("name");
-
+      const target: any = event.target;
       const fakeBoxCollection: NodeListOf<HTMLLabelElement> =
         document.querySelectorAll(".fakeBox");
-      const target: any = event.target;
+
+      const fakeInputCollection: NodeListOf<HTMLInputElement> =
+        document.querySelectorAll(".fakeInput");
 
       fakeBoxCollection.forEach((el: HTMLLabelElement) => {
         if (el.getAttribute("for") === target.getAttribute("for")) {
@@ -55,7 +58,24 @@ const Input = React.forwardRef(
           el.dataset.ischecked = "false";
         }
       });
+
+      if (callback) {
+        callback();
+      }
     }
+
+    useEffect(() => {
+      if (type === "radio") {
+        const fakeInputCollection: NodeListOf<HTMLInputElement> =
+          document.querySelectorAll(".fakeInput");
+
+        fakeInputCollection.forEach((el: HTMLInputElement, key) => {
+          if (key === 0) {
+            el.checked = true;
+          }
+        });
+      }
+    }, []);
 
     switch (type) {
       case "text":
@@ -110,7 +130,7 @@ const Input = React.forwardRef(
               id={name}
               name={groupName}
               ref={inputRef}
-              checked={isChecked === true}
+              className="fakeInput"
             />
           </div>
         );
