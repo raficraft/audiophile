@@ -59,7 +59,11 @@ export default function Header() {
       </section>
       {UI.modal && (
         <Modal>
-          <Cart itemsType="cart" />
+          <section className="wrapper_layout">
+            <div className="wrapper_inside relative" id="cart_wrapper">
+              <Cart itemsType="cart" />
+            </div>
+          </section>
         </Modal>
       )}
     </>

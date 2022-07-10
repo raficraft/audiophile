@@ -41,7 +41,7 @@ export default function Checkout() {
         <div className="wrapper_inside flexCenter">
           <div className={S.checkout}>
             <Checkout_form ref={formRef} />
-            <aside>
+            <aside className={S.aside}>
               <Cart
                 itemsType="summary"
                 submit={() => {

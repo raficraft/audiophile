@@ -7,13 +7,31 @@
   padding: 142px 0;
 
   form,
-  aside {
+  .aside {
     background-color: var(--background-light);
     border-radius: 8px;
   }
 
-  aside {
+  .aside {
+    @include flex();
     @include responsiveContainer(350px);
-    display: flex;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .checkout {
+    @include flex(column);
+    gap: 2rem;
+    padding: 97px 0 116px;
+  }
+
+  form,
+  .aside {
+    @include responsiveContainer(100%);
+  }
+
+  .aside {
+    padding: 0 1.5rem;
+    @include flexCenter();
   }
 }
