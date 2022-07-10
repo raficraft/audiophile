@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Cart from "../../Component/Cart/Cart";
 import { validity_input } from "../../Component/Input/validity_input";
+import Modal from "../../Component/Modal/Modal";
 import S from "./Checkout.module.scss";
 import Checkout_form from "./Checkout_Form/Checkout_form";
 
 export default function Checkout() {
   const formRef = React.createRef<any>();
+  const [validPaiement, setValidPaiment] = useState(false);
 
   function handleSubmit() {
     const formItem = formRef.current.collection;
@@ -28,26 +30,33 @@ export default function Checkout() {
     }
 
     if (countError === 0) {
-      console.log("paiment en cours");
+      setValidPaiment(true);
     }
   }
 
   useEffect(() => {}, []);
   return (
-    <section className="wrapper_layout">
-      <div className="wrapper_inside flexCenter">
-        <div className={S.checkout}>
-          <Checkout_form ref={formRef} />
-          <aside>
-            <Cart
-              itemsType="summary"
-              submit={() => {
-                handleSubmit();
-              }}
-            />
-          </aside>
+    <>
+      <section className="wrapper_layout">
+        <div className="wrapper_inside flexCenter">
+          <div className={S.checkout}>
+            <Checkout_form ref={formRef} />
+            <aside>
+              <Cart
+                itemsType="summary"
+                submit={() => {
+                  handleSubmit();
+                }}
+              />
+            </aside>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      {validPaiement && (
+        <Modal>
+          <h1>Paiement valider</h1>
+        </Modal>
+      )}
+    </>
   );
 }
