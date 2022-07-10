@@ -1,17 +1,28 @@
 export const validity_input = (input: any) => {
-  const currentItem = input.current;
-  const pattern = currentItem.getAttribute("pattern");
-  const value = currentItem.value;
-  const regex = new RegExp(pattern);
+  const type = input.getAttribute("type");
 
-  if (value.length < 3) {
-    const error: string = "at least 3 characters";
-    return error;
-  }
+  switch (type) {
+    case "radio":
+      return "";
 
-  if (!regex.test(value)) {
-    const error: string = "wrong format";
-    return error;
+    default:
+      const value = input.value;
+      const pattern = input.getAttribute("pattern");
+      const regex = new RegExp(pattern);
+
+      if (input.value.length === 0) {
+        return "require field";
+      }
+
+      if (!regex.test(value)) {
+        return "wrong format";
+      }
+
+      if (input.value.length < 3) {
+        return "at least 3 characters";
+      }
+
+      break;
   }
 
   return "";

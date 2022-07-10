@@ -1,6 +1,64 @@
 @import "../../sass/abstract/function.scss";
 
 .cart {
-  background-color: red;
-  @include size(200px);
+  position: absolute;
+  right: 0;
+  background-color: white;
+  padding: 2rem 1.75rem;
+  border-radius: 8px;
+  max-width: 377px;
+  width: 100%;
+
+  @media screen and (max-width: "600px") {
+    position: static;
+  }
+
+  .header_top {
+    @include flex(row, space-between, center);
+    margin: 0 0 2rem 0;
+    @include responsiveContainer(100%);
+    button {
+      background-color: none;
+      text-decoration: underline;
+      border: none;
+      font-weight: 700;
+      transition: 0.5s;
+      &:hover {
+        color: var(--red);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  .cart_list__container {
+    @include flex(column);
+    gap: 1.5rem;
+    @include responsiveContainer(100%);
+  }
+
+  .bill_calc {
+    margin: 2rem 0 0 0;
+    gap: 8px;
+    @include flex(column);
+  }
+
+  .total_and_pay {
+    @include flex(column);
+    width: 100%;
+    margin: 1.5rem 0 0 0;
+    gap: 2rem;
+  }
+  .bill_item {
+    @include flex(row, space-between);
+    width: 100%;
+    p:first-child {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 25px;
+      color: var(--text-dark);
+      mix-blend-mode: normal;
+      opacity: 0.5;
+    }
+  }
 }

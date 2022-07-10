@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React from "react";
 
 import image_hero_desktop from "../../../assets/home/desktop/image-hero.jpg";
 import image_hero_mobile from "../../../assets/home/mobile/image-hero.jpg";
@@ -6,7 +6,7 @@ import image_hero_tablet from "../../../assets/home/tablet/image-hero.jpg";
 import useLoadImage from "../../hooks/useLoadImage";
 
 import S from "./Hero_home.module.scss";
-import { NavLink } from "react-router-dom";
+import Btn from "../button/Btn/Btn";
 
 export default function Hero_home() {
   const [imgDesktop] = useLoadImage(image_hero_desktop);
@@ -48,9 +48,14 @@ export default function Hero_home() {
                 Experience natural, lifelike audio and exceptional build quality
                 made for the passionate music enthusiast.
               </p>
-              <NavLink to="/" className="btn btn_primary">
-                see product
-              </NavLink>
+              <Btn
+                params={{
+                  mode: "link",
+                  text: "See product",
+                  cssName: ["btn_primary", "btn_primary__std"],
+                  link: "/product/xx99-mark-two-headphones",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -58,10 +63,3 @@ export default function Hero_home() {
     </section>
   );
 }
-
-// style={{ transform: `translateY(-${topPosition})` }}
-
-// style={{
-//     transform: `translateY(${topPosition})`,
-//     maxHeight: `calc(100% - ${topPosition})`,
-//   }}

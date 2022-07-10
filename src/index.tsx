@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./core/redux/store";
 import { BrowserRouter } from "react-router-dom";
+import UI_provider from "./core/context/UI_Provider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,9 +15,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UI_provider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UI_provider>
     </Provider>
   </React.StrictMode>
 );

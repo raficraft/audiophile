@@ -1,12 +1,20 @@
 @import "../../sass/abstract/function.scss";
 
 .notification {
-  background-color: red;
-  position: absolute;
-  padding: 2rem;
+  position: fixed;
+  padding: 1rem 2rem;
   bottom: 0;
   right: 0;
+  z-index: 2000;
   p {
     color: white;
   }
+}
+
+.notif_alert {
+  background-color: var(--red);
+}
+
+.notif_info {
+  background-color: var(--background-orange);
 }

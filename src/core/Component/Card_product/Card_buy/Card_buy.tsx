@@ -20,7 +20,7 @@ import useLoadImage from "../../../hooks/useLoadImage";
 import Other_product from "../Other_product/Other_product";
 
 export default function Card_buy({ data }: any) {
-  console.log(data);
+  // console.log(data);
   const id = data.id;
   const title = data.name;
   const slug = data.slug;

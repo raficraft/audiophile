@@ -1,23 +1,37 @@
-import React, { useEffect, useContext } from "react";
-import { addProduct, MockProduct } from "../../../redux/slice/caddySlice";
-import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
+import React, { useEffect, Dispatch, useContext } from "react";
+import {
+  addProduct,
+  MockProduct,
+  updateQty,
+} from "../../../redux/slice/caddySlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/toolkit";
-import Notification from "../../Notification/Notification";
-import S from "./Add_product.module.scss";
+import S from "./Update_cart.module.scss";
 
 import { UI_context, UI_context_type } from "../../../context/UI_Provider";
-import Btn from "../Btn/Btn";
+import { controlCaddy } from "../../../utils/controlCaddy/controlCaddy";
 
-export default function Add_product({
+export interface update_product {
+  id: number;
+  name: string;
+  slug?: string;
+  price: number;
+  qty: number;
+  img?: any;
+  setter: Dispatch<boolean>;
+}
+
+export default function Update_cart({
   id,
   name,
   price,
   qty,
   slug,
-}: MockProduct) {
+  setter,
+}: update_product) {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
+
   const { UI, callback } = useContext(UI_context) as UI_context_type;
 
   function addToCart() {
@@ -26,26 +40,16 @@ export default function Add_product({
       qty = Number(inputRef.current.value);
     }
 
-    if (inputRef && inputRef.current) {
-      inputRef.current.value = "1";
-    }
-
     const isValidCaddy = controlCaddy(products, price);
+
+    console.log(isValidCaddy);
 
     if (isValidCaddy.error) {
       callback.openNotification(isValidCaddy.message, "alert");
       return false;
     }
 
-    dispatch(
-      addProduct({
-        id,
-        name,
-        slug,
-        price,
-        qty: qty,
-      })
-    );
+    dispatch(updateQty({ id, qty: qty }));
 
     callback.openNotification(
       `Your product has been added to the basket`,
@@ -57,25 +61,45 @@ export default function Add_product({
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       if (Number(inputRef.current.value) >= 1) {
-        const newVal = String(parseInt(inputRef.current.value) - 1);
-        inputRef.current.value = newVal === "0" ? "1" : newVal;
+        const removeOneToCurrentValue = String(
+          parseInt(inputRef.current.value) - 1
+        );
+        const qtyUpdate = parseInt(inputRef.current.value) - 1;
+        inputRef.current.value = removeOneToCurrentValue;
+        console.log(qtyUpdate);
+        if (qtyUpdate > 0) {
+          dispatch(updateQty({ id, qty: qtyUpdate }));
+        } else {
+          setter(true);
+          inputRef.current.value = "1";
+        }
       }
     }
+  }
+
+  function validCaddy() {
+    const isValidCaddy = controlCaddy(products, price);
+    if (isValidCaddy.error) {
+      callback.openNotification(isValidCaddy.message, "alert");
+      return false;
+    }
+    return true;
   }
 
   function increment(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
       const maxQty = inputRef.current.getAttribute("max")!;
-      if (Number(inputRef.current.value) >= 1) {
-        const addOneItem = String(parseInt(inputRef.current.value) + 1);
+      if (Number(inputRef.current.value) >= 0) {
+        const addOneToCurrentValue = String(
+          parseInt(inputRef.current.value) + 1
+        );
 
-        if (Number(addOneItem) <= Number(maxQty)) {
-          inputRef.current.value = addOneItem;
-        } else {
-          callback.openNotification(
-            "You cannot order more than 20 products",
-            "alert"
-          );
+        const checkCart = validCaddy();
+
+        if (Number(addOneToCurrentValue) <= Number(maxQty) && checkCart) {
+          inputRef.current.value = addOneToCurrentValue;
+          const qtyUpdate = parseInt(inputRef.current.value);
+          dispatch(updateQty({ id, qty: qtyUpdate }));
         }
       }
     }
@@ -94,6 +118,7 @@ export default function Add_product({
   }
 
   function handleKeyUp(event: React.KeyboardEvent<HTMLInputElement>) {
+    console.log(event);
     if (event.code === "Enter") {
       addToCart();
     }
@@ -105,7 +130,7 @@ export default function Add_product({
 
   return (
     <>
-      <div className={`flex gap_16`}>
+      <div className={S.update_cart}>
         <div className={S.input_number}>
           <button
             type="button"
@@ -117,7 +142,7 @@ export default function Add_product({
           </button>
           <input
             type="number"
-            defaultValue="1"
+            defaultValue={qty}
             ref={inputRef}
             min="1"
             max="20"
@@ -134,17 +159,6 @@ export default function Add_product({
             +
           </button>
         </div>
-
-        <Btn
-          params={{
-            mode: "btn",
-            text: "add to cart",
-            cssName: ["btn_primary", "btn_primary__full"],
-          }}
-          callback={() => {
-            addToCart();
-          }}
-        />
       </div>
     </>
   );

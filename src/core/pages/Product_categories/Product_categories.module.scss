@@ -3,10 +3,6 @@
 .list_categories {
   @include flexCenter(column);
   gap: 160px;
-  min-height: 100vh;
-  content: " ";
   width: 100%;
-
-  @media screen and (max-width: 600px) {
-  }
+  padding: 0 0 160px 0;
 }
