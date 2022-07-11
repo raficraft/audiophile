@@ -135,7 +135,7 @@ export default function Cart({ itemsType, submit }: Cart_props) {
               link: "/checkout",
             }}
             callback={() => {
-              callback.openModal();
+              callback.closeModal();
             }}
           />
         )}

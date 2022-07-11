@@ -7,15 +7,24 @@ type UI_Provider_props = {
 
 export type UI_context_type = {
   UI: {
-    modal: boolean;
+    modal: boolean | string;
     notification: { show: boolean; message: string; type: string };
     shop: { vat: number; ship: number };
   };
   callback: {
-    openModal: () => void;
+    openModal: (state: boolean | string) => void;
+    closeModal: () => void;
     openNotification: (message: string, type: string) => void;
     closeNotification: () => void;
   };
+  setUI?: Dispatch<boolean>;
+};
+
+export type UI_state_type = {
+  modal: boolean | string;
+  notification: { show: boolean; message: string; type: string };
+  shop: { vat: number; ship: number };
+
   setUI?: Dispatch<boolean>;
 };
 
@@ -24,7 +33,7 @@ export default function UI_provider({ children }: UI_Provider_props) {
   /**
    * Modal Initial Context
    */
-  const [UI, setUI] = useState({
+  const [UI, setUI] = useState<UI_state_type>({
     modal: false,
     notification: {
       show: false,
@@ -52,8 +61,15 @@ export default function UI_provider({ children }: UI_Provider_props) {
   };
 
   const callback = {
-    openModal: () => {
-      setUI((S) => ({ ...S, modal: !UI.modal }));
+    openModal: (state: boolean | string) => {
+      setUI((S) => ({ ...S, modal: state }));
+    },
+
+    closeModal: () => {
+      setUI((S) => ({ ...S, modal: "reverse" }));
+      setTimeout(() => {
+        setUI((S) => ({ ...S, modal: false }));
+      }, 500);
     },
 
     openNotification: (message: string, type: string) => {
