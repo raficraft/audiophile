@@ -31,6 +31,9 @@ export default function Header() {
       <section
         id="header_layout"
         className="wrapper_layout header_layout push_loader"
+        onClick={() => {
+          UI.modal && callback.closeModal();
+        }}
       >
         <div className="wrapper_inside wrapper_header">
           <header className={S.header}>
