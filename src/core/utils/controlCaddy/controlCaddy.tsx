@@ -1,4 +1,3 @@
-import { MockProduct } from "../../redux/slice/caddySlice";
 export function controlCaddy(
   currentCaddy: any,
   addPrice: number = 0

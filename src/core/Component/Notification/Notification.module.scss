@@ -3,9 +3,15 @@
 .notification {
   position: fixed;
   padding: 1rem 2rem;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   z-index: 2000;
+  animation: 0.5s enterIN forwards;
+  animation-direction: normal;
+
+  &[data-show="reverse"] {
+    animation: 0.5s enterOUT forwards;
+  }
   p {
     color: white;
   }
@@ -17,4 +23,22 @@
 
 .notif_info {
   background-color: var(--background-orange);
+}
+
+@keyframes enterIN {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes enterOUT {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(150%);
+  }
 }

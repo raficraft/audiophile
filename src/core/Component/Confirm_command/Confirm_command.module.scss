@@ -1,0 +1,81 @@
+@import "../../sass/abstract/function.scss";
+
+.container {
+  @include flex(row, center, flex-start);
+
+  .content {
+    @include responsiveContainer(540px);
+    background-color: white;
+    border-radius: 8px;
+    padding: 3rem;
+
+    @media screen and (max-width: 600px) {
+      @include responsiveContainer(calc(100% - 3rem));
+      padding: 2rem;
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+    .svg_container {
+      margin: 0 0 2rem 0;
+    }
+
+    .header_top {
+      p {
+        margin: 1.5rem 0 0 0;
+      }
+    }
+  }
+
+  .summary_order {
+    @include flex(row, space-between);
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin: 2rem 0;
+    @media screen and (max-width: 600px) {
+      @include flex(column);
+    }
+  }
+
+  .valid_order {
+    flex: 1;
+    padding: 1.5rem;
+
+    @media screen and (max-width: 600px) {
+      @include responsiveContainer(100%);
+    }
+  }
+
+  .toggle_details {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    button {
+      width: 100%;
+      padding: 12px 0 0 0;
+      font-weight: 900;
+      letter-spacing: -0.21px;
+      text-transform: lowercase;
+      font-size: 12px;
+    }
+  }
+
+  .total_price {
+    @include flex(column, flex-end);
+    padding: 0 2rem 2.5rem 2rem;
+    align-self: stretch;
+    @include responsiveContainer(198px);
+    background-color: black;
+    border-radius: 0 8px 8px 0;
+    gap: 0.5rem;
+
+    p:last-child {
+      font-size: 18px;
+    }
+
+    @media screen and (max-width: 600px) {
+      @include responsiveContainer(100%);
+      border-radius: 0 0 8px 8px;
+      @include flex(column, center);
+      padding: 1rem 1.5rem 1.25rem 1.5rem;
+    }
+  }
+}

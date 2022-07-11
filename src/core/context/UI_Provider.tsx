@@ -8,21 +8,22 @@ type UI_Provider_props = {
 export type UI_context_type = {
   UI: {
     modal: boolean | string;
-    notification: { show: boolean; message: string; type: string };
+    notification: { show: boolean | string; message: string; type: string };
     shop: { vat: number; ship: number };
   };
   callback: {
     openModal: (state: boolean | string) => void;
     closeModal: () => void;
     openNotification: (message: string, type: string) => void;
-    closeNotification: () => void;
+    closeNotification: (message: string, type: string) => void;
+    removeNotification: () => void;
   };
   setUI?: Dispatch<boolean>;
 };
 
 export type UI_state_type = {
   modal: boolean | string;
-  notification: { show: boolean; message: string; type: string };
+  notification: { show: boolean | string; message: string; type: string };
   shop: { vat: number; ship: number };
 
   setUI?: Dispatch<boolean>;
@@ -46,20 +47,6 @@ export default function UI_provider({ children }: UI_Provider_props) {
     },
   });
 
-  const hiddenScrollBar = () => {
-    let htmlElt = document.documentElement;
-    let bodyElt = document.body;
-    //Enlève la scrollbar lors de l'ouverture du carousel.
-    htmlElt.scrollTop = 0;
-    bodyElt.scrollTop = 0;
-    bodyElt.style.overflow = "hidden";
-  };
-
-  const restoreScrollBar = () => {
-    let bodyElt = document.body;
-    bodyElt.style.overflow = "";
-  };
-
   const callback = {
     openModal: (state: boolean | string) => {
       setUI((S) => ({ ...S, modal: state }));
@@ -73,20 +60,33 @@ export default function UI_provider({ children }: UI_Provider_props) {
     },
 
     openNotification: (message: string, type: string) => {
-      if (UI.notification.show) {
-        callback.closeNotification();
+      if (!UI.notification.show) {
+        setUI((S) => ({
+          ...S,
+          notification: { show: true, message: message, type },
+        }));
+        setTimeout(() => {
+          callback.closeNotification(message, type);
+        }, 5000);
       }
-
-      setUI((S) => ({
-        ...S,
-        notification: { show: true, message: message, type },
-      }));
-      setTimeout(() => {
-        callback.closeNotification();
-      }, 5000);
     },
 
-    closeNotification: () => {
+    closeNotification: (message: string, type: string) => {
+      setUI((S) => ({
+        ...S,
+        notification: {
+          show: "reverse",
+          message: message,
+          type: type,
+        },
+      }));
+
+      setTimeout(() => {
+        callback.removeNotification();
+      }, 500);
+    },
+
+    removeNotification: () => {
       setUI((S) => ({
         ...S,
         notification: { show: false, message: "", type: "" },

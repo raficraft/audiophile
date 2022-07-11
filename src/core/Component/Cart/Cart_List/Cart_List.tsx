@@ -20,9 +20,7 @@ export default function Cart_List({
 
   // remove specific word and contract Mark designation
   function shortName() {
-    console.log("change name", name);
-
-    const removeWord = ["headphones", "earphones", "speaker"];
+    const removeWord = ["headphones", "wireless earphones", "speaker"];
 
     for (const iterator of removeWord) {
       if (name.toLowerCase().includes(iterator.toLowerCase())) {
@@ -39,12 +37,13 @@ export default function Cart_List({
 
   function deleteProduct() {
     dispatch(removeProduct(id));
+    setIsDelete(false);
   }
 
   function makeItem() {
     const props = { id, name, slug, qty, price, setter: setIsDelete };
     return (
-      <div className={S.cart_list}>
+      <div className={S[itemsType]}>
         <div className={S.cart_list__content}>
           <header>
             <div className={S.img_container}>
@@ -64,9 +63,11 @@ export default function Cart_List({
             //find an idea to use as a child
             itemsType === "cart" && <Update_cart {...props} />
           }
-          {itemsType !== "cart" && <p>{`X ${qty}`}</p>}
+          {itemsType !== "cart" && (
+            <p className="bold text_dark__smooth flex_start">{`x${qty}`}</p>
+          )}
         </div>
-        {isDelete && itemsType === "itemsType" && (
+        {isDelete && itemsType === "cart" && (
           <div className={S.action_callback}>
             <p>Delete this product ?</p>
             <span>

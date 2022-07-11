@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Cart from "../../Component/Cart/Cart";
+import Confirm_command from "../../Component/Confirm_command/Confirm_command";
 import { validity_input } from "../../Component/Input/validity_input";
 import Modal from "../../Component/Modal/Modal";
 import S from "./Checkout.module.scss";
@@ -15,10 +16,7 @@ export default function Checkout() {
     let countError = keys.length;
 
     for (const iterator of keys) {
-      // console.log(iterator);
-      // console.log(formItem[iterator].current);
       if (formItem[iterator].current !== null) {
-        console.log("!!!!");
         const inputEl = formItem[iterator].current.input;
         const error = formItem[iterator].current.error;
 
@@ -54,7 +52,7 @@ export default function Checkout() {
       </section>
       {validPaiement && (
         <Modal>
-          <h1>Paiement valider</h1>
+          <Confirm_command />
         </Modal>
       )}
     </>
