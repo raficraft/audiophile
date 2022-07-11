@@ -60,7 +60,8 @@ export default function Update_cart({
 
   function decrement(event: React.MouseEvent<HTMLButtonElement>) {
     if (inputRef && inputRef.current) {
-      if (Number(inputRef.current.value) >= 1) {
+      console.log(Number(inputRef.current.value) - 1);
+      if (Number(inputRef.current.value) - 1 >= 1) {
         const removeOneToCurrentValue = String(
           parseInt(inputRef.current.value) - 1
         );
@@ -69,10 +70,11 @@ export default function Update_cart({
         console.log(qtyUpdate);
         if (qtyUpdate > 0) {
           dispatch(updateQty({ id, qty: qtyUpdate }));
-        } else {
-          setter(true);
-          inputRef.current.value = "1";
         }
+      } else {
+        console.log("you want delete ?");
+        setter(true);
+        inputRef.current.value = "1";
       }
     }
   }

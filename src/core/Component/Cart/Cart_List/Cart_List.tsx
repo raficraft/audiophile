@@ -20,8 +20,6 @@ export default function Cart_List({
 
   // remove specific word and contract Mark designation
   function shortName() {
-    console.log("change name", name);
-
     const removeWord = ["headphones", "earphones", "speaker"];
 
     for (const iterator of removeWord) {
@@ -66,7 +64,7 @@ export default function Cart_List({
           }
           {itemsType !== "cart" && <p>{`X ${qty}`}</p>}
         </div>
-        {isDelete && itemsType === "itemsType" && (
+        {isDelete && itemsType === "cart" && (
           <div className={S.action_callback}>
             <p>Delete this product ?</p>
             <span>
