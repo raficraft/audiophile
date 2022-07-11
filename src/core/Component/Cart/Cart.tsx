@@ -67,81 +67,79 @@ export default function Cart({ itemsType, submit }: Cart_props) {
   }, [products]);
 
   return (
-    <section className="wrapper_layout">
-      <div className="wrapper_inside relative" id="cart_wrapper">
-        <div
-          className={S.cart}
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
-        >
-          <header className={S.header_top}>
-            <p className="bold uppercase">
-              {itemsType}
-              {itemsType === "cart" && `(${qtyInCart})`}
-            </p>
+    <div
+      className={S[itemsType]}
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
+    >
+      <header className={S.header_top}>
+        <p className="bold uppercase">
+          {itemsType}
+          {itemsType === "cart" && `(${qtyInCart})`}
+        </p>
 
-            {itemsType === "cart" && (
-              <button
-                className="text_dark__smooth"
-                onClick={(event) => {
-                  emptyCaddy(event);
-                }}
-              >
-                Remove all
-              </button>
-            )}
-          </header>
-          <div className={S.cart_list__container}>{cart_listing()}</div>
-          <footer className={S.bill_calc}>
+        {itemsType === "cart" && (
+          <button
+            className="text_dark__smooth"
+            onClick={(event) => {
+              emptyCaddy(event);
+            }}
+          >
+            Remove all
+          </button>
+        )}
+      </header>
+      <div className={S.cart_list__container}>{cart_listing()}</div>
+      <footer className={S.bill_calc}>
+        <span className={S.bill_item}>
+          <p>TOTAL</p>
+          <p className="bold">${bill.total}</p>
+        </span>
+        {itemsType !== "cart" && (
+          <>
             <span className={S.bill_item}>
-              <p>TOTAL</p>
-              <p className="bold">${bill.total}</p>
+              <p>Shipping</p>
+              <p className="bold">${UI.shop.ship}</p>
             </span>
-            {itemsType !== "cart" && (
-              <>
-                <span className={S.bill_item}>
-                  <p>Shipping</p>
-                  <p className="bold">${UI.shop.ship}</p>
-                </span>
-                <span className={S.bill_item}>
-                  <p>VAT included</p>
-                  <p className="bold">${bill.totalVat}</p>
-                </span>
-                <footer className={S.total_and_pay}>
-                  <span className={S.bill_item}>
-                    <p>GRAND TOTAL</p>
-                    <p className="bold">${bill.grandTotal}</p>
-                  </span>
+            <span className={S.bill_item}>
+              <p>
+                VAT {"("}INCLUDED{")"}
+              </p>
+              <p className="bold">${bill.totalVat}</p>
+            </span>
+            <footer className={S.total_and_pay}>
+              <span className={S.bill_item}>
+                <p>GRAND TOTAL</p>
+                <p className="bold">${bill.grandTotal}</p>
+              </span>
 
-                  <Btn
-                    params={{
-                      mode: "btn",
-                      text: "continue & pay",
-                      cssName: ["btn_primary"],
-                    }}
-                    callback={submit}
-                  />
-                </footer>
-              </>
-            )}
-
-            {itemsType === "cart" && (
               <Btn
                 params={{
-                  mode: "link_and_callback",
-                  text: "checkout",
-                  cssName: ["btn_primary", "btn_primary__full"],
-                  link: "/checkout",
+                  mode: "btn",
+                  text: "continue & pay",
+                  cssName: ["btn_primary"],
                 }}
-                callback={() => {
-                  callback.openModal();
-                }}
+                callback={submit}
               />
-            )}
-          </footer>
-        </div>
-      </div>
-    </section>
+            </footer>
+          </>
+        )}
+
+        {itemsType === "cart" && (
+          <Btn
+            params={{
+              mode: "link_and_callback",
+              text: "checkout",
+              cssName: ["btn_primary", "btn_primary__full"],
+              link: "/checkout",
+            }}
+            callback={() => {
+              callback.closeModal();
+            }}
+          />
+        )}
+      </footer>
+    </div>
   );
 }

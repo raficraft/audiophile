@@ -3,8 +3,34 @@
 .modal {
   position: absolute;
   width: 100%;
-  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  padding: 2rem 0;
+  padding: 2rem 0 0 0;
+  top: 90px;
+  transform: translateY(-150%);
+  height: calc(100% - 90px);
+  animation: 0.5s enterIN forwards;
+  animation-direction: normal;
+
+  &[data-show="reverse"] {
+    animation: 0.5s enterOUT forwards;
+  }
+}
+
+@keyframes enterIN {
+  0% {
+    transform: translateY(-150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes enterOUT {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-150%);
+  }
 }

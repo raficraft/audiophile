@@ -12,29 +12,28 @@ import { useAppSelector } from "../hooks/toolkit";
 export default function Header() {
   const { UI, callback } = useContext(UI_context) as UI_context_type;
 
-  useEffect(() => {
-    document.addEventListener("keyup", (event) => {
-      console.log(event.code);
-      if (event.code === "Escap") {
-        callback.openModal();
-      }
-    });
-
-    // return () => {
-    //   document.removeEventListener("keyup", (event) => {
-    //     console.log(event.code);
-    //     if (event.code === "Escap") {
-    //       callback.openModal();
-    //     }
-    //   });
-    // };
-  }, []);
+  function renderModal() {
+    if (UI.modal || UI.modal === "reverse") {
+      return (
+        <Modal>
+          <section className="wrapper_layout">
+            <div className="wrapper_inside relative" id="cart_wrapper">
+              <Cart itemsType="cart" />
+            </div>
+          </section>
+        </Modal>
+      );
+    }
+  }
 
   return (
     <>
       <section
         id="header_layout"
         className="wrapper_layout header_layout push_loader"
+        onClick={() => {
+          UI.modal && callback.closeModal();
+        }}
       >
         <div className="wrapper_inside wrapper_header">
           <header className={S.header}>
@@ -50,18 +49,14 @@ export default function Header() {
             <div className={S.SVG_container}>
               <CaddyIcons
                 onClick={() => {
-                  callback.openModal();
+                  !UI.modal ? callback.openModal(true) : callback.closeModal();
                 }}
               ></CaddyIcons>
             </div>
           </header>
         </div>
       </section>
-      {UI.modal && (
-        <Modal>
-          <Cart itemsType="cart" />
-        </Modal>
-      )}
+      {renderModal()}
     </>
   );
 }

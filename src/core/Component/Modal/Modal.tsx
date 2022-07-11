@@ -24,13 +24,31 @@ export default function Modal({ children }: Modal_props) {
     }
   }, []);
 
+  useEffect(() => {
+    document.addEventListener("keyup", (event) => {
+      console.log(event.code);
+      if (event.code === "Escape") {
+        callback.closeModal();
+      }
+    });
+
+    return () => {
+      document.removeEventListener("keyup", (event) => {
+        console.log(event.code);
+        if (event.code === "Escape") {
+          callback.closeModal();
+        }
+      });
+    };
+  }, []);
+
   return createPortal(
     <div
       className={S.modal}
-      style={{ top: topPosition }}
       onClick={() => {
-        callback.openModal();
+        callback.closeModal();
       }}
+      data-show={UI.modal}
     >
       {children}
     </div>,
