@@ -11,6 +11,18 @@ import Notification from "./core/Component/Notification/Notification";
 
 function App() {
   const { UI } = useContext(UI_context) as UI_context_type;
+
+  function showNotification() {
+    if (UI.notification.show || UI.notification.show === "reverse") {
+      return (
+        <Notification
+          message={UI.notification.message}
+          type={UI.notification.type}
+        />
+      );
+    }
+  }
+
   return (
     <>
       <Header />
@@ -22,12 +34,7 @@ function App() {
       </Routes>
       <Footer />
 
-      {UI.notification.show && (
-        <Notification
-          message={UI.notification.message}
-          type={UI.notification.type}
-        />
-      )}
+      {showNotification()}
     </>
   );
 }

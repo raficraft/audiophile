@@ -98,6 +98,13 @@ export default function Update_cart({
 
         const checkCart = validCaddy();
 
+        if (Number(addOneToCurrentValue) > Number(maxQty)) {
+          callback.openNotification(
+            "You cannot order more than 20 products",
+            "alert"
+          );
+        }
+
         if (Number(addOneToCurrentValue) <= Number(maxQty) && checkCart) {
           inputRef.current.value = addOneToCurrentValue;
           const qtyUpdate = parseInt(inputRef.current.value);

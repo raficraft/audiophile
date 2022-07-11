@@ -14,15 +14,7 @@ type Modal_props = {
 };
 
 export default function Modal({ children }: Modal_props) {
-  const [topPosition, setTopPosition] = useState("0px");
   const { UI, callback } = useContext(UI_context) as UI_context_type;
-  useLayoutEffect(() => {
-    const header: HTMLElement | null = document.getElementById("header_layout");
-    if (header) {
-      const styles_header = window.getComputedStyle(header);
-      setTopPosition(styles_header.height);
-    }
-  }, []);
 
   useEffect(() => {
     document.addEventListener("keyup", (event) => {
