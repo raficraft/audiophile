@@ -26,9 +26,16 @@ export default function Add_product({
     message: string;
   } {
     console.log("controlQty");
-    console.log(products.caddy.filter((el) => el.id === id));
+    console.log(
+      products.caddy.filter((el, key) => {
+        console.log(el.id);
+        console.log(id);
+      })
+    );
 
+    console.log(products.caddy);
     const currentProduct = products.caddy.filter((el) => el.id === id);
+    console.log(currentProduct);
     const currentQty = currentProduct[0].qty;
 
     if (currentQty + addQty > 20) {
@@ -50,11 +57,14 @@ export default function Add_product({
       qty = Number(inputRef.current.value);
     }
 
-    const qtyCheck = controlQty(qty);
+    //Control if qty added if not
+    if (products.caddy) {
+      const qtyCheck = controlQty(qty);
 
-    if (qtyCheck.error) {
-      callback.openNotification(qtyCheck.message, "alert");
-      return false;
+      if (qtyCheck.error) {
+        callback.openNotification(qtyCheck.message, "alert");
+        return false;
+      }
     }
     const isValidCaddy = controlCaddy(products, price);
 

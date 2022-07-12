@@ -8,6 +8,7 @@ import {
 import Btn from "../button/Btn/Btn";
 import Sticker_product from "../Sticker_product/Sticker_product";
 import S from "./List_product_category.module.scss";
+import { orderProduct } from "../../utils/manageJson/manageJson";
 //Best Gear Image all format
 
 export default function List_product_category({ data }: any) {
@@ -16,8 +17,9 @@ export default function List_product_category({ data }: any) {
   //Make only utils data contain id product JSON and get Image sizing with dynamic import
 
   async function buildData(data: any[]) {
-    const currentImage = await createImgInfo(data, "categoryImage");
-    const consumedData: ConsumedProduct[] = extractConsumedData(data, [
+    const orderData = orderProduct(data);
+    const currentImage = await createImgInfo(orderData, "categoryImage");
+    const consumedData: ConsumedProduct[] = extractConsumedData(orderData, [
       "id",
       "slug",
       "name",

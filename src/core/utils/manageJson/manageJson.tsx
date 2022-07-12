@@ -21,8 +21,8 @@ export function extractConsumedData(data: any[], extractKey: string[]) {
       extractedData[Number(key)] = createObj;
     }
   }
-  const orderedData = orderProduct(extractedData);
-  return orderedData;
+
+  return extractedData;
 }
 
 //If product as new he's be placed on start of array
